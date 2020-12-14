@@ -22,9 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
+=======
+    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,11 +58,14 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+<<<<<<< Updated upstream
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+=======
+>>>>>>> Stashed changes
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -140,13 +147,18 @@
       <option name="presentableId" value="Default" />
       <updated>1607971653708</updated>
       <workItem from="1607971655130" duration="678000" />
+<<<<<<< Updated upstream
       <workItem from="1607986834612" duration="115000" />
+=======
+      <workItem from="1607987021752" duration="41000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< Updated upstream
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -163,5 +175,12 @@
       <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="208" y="23" key="SettingsEditor/0.23.1440.801/1440.-157.1920.1057@0.23.1440.801" timestamp="1607986876542" />
+=======
+  <component name="WindowStateProjectService">
+    <state x="208" y="23" key="SettingsEditor" timestamp="1607987061601">
+      <screen x="0" y="23" width="1440" height="801" />
+    </state>
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.801/1440.-157.1920.1057@0.23.1440.801" timestamp="1607987061601" />
+>>>>>>> Stashed changes
   </component>
 </project>
