@@ -1,8 +1,6 @@
-package com.example.contact.controller;
+package com.example.contact.resource;
 
-import com.example.contact.document.Contact;
 import com.example.contact.document.EContact;
-import com.example.contact.repository.ContactRepository;
 import com.example.contact.repository.EContactRepository;
 import org.springframework.web.bind.annotation.*;
 

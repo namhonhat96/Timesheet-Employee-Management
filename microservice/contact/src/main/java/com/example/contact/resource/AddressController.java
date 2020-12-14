@@ -1,4 +1,4 @@
-package com.example.contact.controller;
+package com.example.contact.resource;
 
 import com.example.contact.document.Address;
 import com.example.contact.repository.AddressRepository;

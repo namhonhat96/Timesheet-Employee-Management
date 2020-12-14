@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/AddressDBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/ContactDBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/EContactDBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/AddressController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/ContactController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/EContactController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/document/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/document/Contact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/document/EContact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/repository/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/repository/ContactRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/repository/EContactRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/ContactApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/ContactApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/resource/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/resource/ContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/controller/EContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/resource/EContactController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +132,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607971653708</updated>
-      <workItem from="1607971655130" duration="5765000" />
+      <workItem from="1607971655130" duration="6049000" />
     </task>
     <servers />
   </component>
@@ -158,37 +148,37 @@
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827@0.23.1440.827" timestamp="1607972930005" />
-    <state width="1058" height="335" key="GridCell.Tab.0.bottom" timestamp="1607977972185">
+    <state width="1058" height="288" key="GridCell.Tab.0.bottom" timestamp="1607978720070">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.0.bottom/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972185" />
-    <state width="1058" height="335" key="GridCell.Tab.0.center" timestamp="1607977972185">
+    <state width="1058" height="288" key="GridCell.Tab.0.bottom/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720070" />
+    <state width="1058" height="288" key="GridCell.Tab.0.center" timestamp="1607978720069">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.0.center/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972185" />
-    <state width="1058" height="335" key="GridCell.Tab.0.left" timestamp="1607977972184">
+    <state width="1058" height="288" key="GridCell.Tab.0.center/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720069" />
+    <state width="1058" height="288" key="GridCell.Tab.0.left" timestamp="1607978720065">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.0.left/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972184" />
-    <state width="1058" height="335" key="GridCell.Tab.0.right" timestamp="1607977972185">
+    <state width="1058" height="288" key="GridCell.Tab.0.left/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720065" />
+    <state width="1058" height="288" key="GridCell.Tab.0.right" timestamp="1607978720069">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.0.right/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972185" />
-    <state width="1058" height="335" key="GridCell.Tab.1.bottom" timestamp="1607977972186">
+    <state width="1058" height="288" key="GridCell.Tab.0.right/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720069" />
+    <state width="1058" height="288" key="GridCell.Tab.1.bottom" timestamp="1607978720071">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.1.bottom/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972186" />
-    <state width="1058" height="335" key="GridCell.Tab.1.center" timestamp="1607977972186">
+    <state width="1058" height="288" key="GridCell.Tab.1.bottom/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720071" />
+    <state width="1058" height="288" key="GridCell.Tab.1.center" timestamp="1607978720070">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.1.center/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972186" />
-    <state width="1058" height="335" key="GridCell.Tab.1.left" timestamp="1607977972186">
+    <state width="1058" height="288" key="GridCell.Tab.1.center/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720070" />
+    <state width="1058" height="288" key="GridCell.Tab.1.left" timestamp="1607978720070">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.1.left/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972186" />
-    <state width="1058" height="335" key="GridCell.Tab.1.right" timestamp="1607977972186">
+    <state width="1058" height="288" key="GridCell.Tab.1.left/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720070" />
+    <state width="1058" height="288" key="GridCell.Tab.1.right" timestamp="1607978720070">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1058" height="335" key="GridCell.Tab.1.right/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607977972186" />
+    <state width="1058" height="288" key="GridCell.Tab.1.right/0.23.1440.827/1440.23.1920.1057@0.23.1440.827" timestamp="1607978720070" />
   </component>
 </project>
