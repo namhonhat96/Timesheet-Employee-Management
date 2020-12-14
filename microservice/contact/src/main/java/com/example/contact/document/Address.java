@@ -13,8 +13,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Address {
     @Id
     private Integer id;
-    private String addressLine;
-    private String city;
-    private String state;
-    private int zipcode;
+    private String homeAddress;
 }

@@ -1,5 +1,6 @@
 package com.example.contact.resource;
 
+import com.example.contact.document.Address;
 import com.example.contact.document.Contact;
 import com.example.contact.repository.ContactRepository;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,17 @@ public class ContactController {
     @GetMapping("/{id}")
     public Contact getContactById(@PathVariable("id") Integer id){
         return this.contactRepository.findContactById(id);
+    }
+
+    @PostMapping("update")
+    public void updateTestByID(@RequestBody Contact contact){
+        Contact validateContact = this.contactRepository.findContactById(contact.getId());
+        System.out.println("Contact ID:" + contact.getId());
+        if(validateContact != null){
+            this.contactRepository.delete(validateContact);
+            this.contactRepository.save(contact);
+        }else{
+            System.out.println("No Record Found");
+        }
     }
 }

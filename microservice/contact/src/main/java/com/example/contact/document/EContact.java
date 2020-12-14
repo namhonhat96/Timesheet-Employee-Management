@@ -13,6 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class EContact {
     @Id
     private Integer id;
+
+    private Integer personID;
     private String name1;
     private String phoneNumber1;
 
