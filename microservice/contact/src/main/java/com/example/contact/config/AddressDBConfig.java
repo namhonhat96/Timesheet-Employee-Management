@@ -10,11 +10,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackageClasses = Address.class)
 @Configuration
 public class AddressDBConfig {
-    @Bean("address")
-    CommandLineRunner commandLineRunner(AddressRepository addressRepository) {
-        return strings -> {
-            addressRepository.save(new Address(1, "123 Rosevelt Street", "Princeton", "New Jersey", 12456));
-        };
-    }
+//    @Bean("address")
+//    CommandLineRunner commandLineRunner(AddressRepository addressRepository) {
+//        return strings -> {
+//            addressRepository.save(new Address(1, "123 Rosevelt Street", "Princeton", "New Jersey", 12456));
+//        };
+//    }
 }
 
