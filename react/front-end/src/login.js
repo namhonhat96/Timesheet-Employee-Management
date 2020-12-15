@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 import "./Login.css";
 
 export default function Login() {
@@ -13,9 +14,20 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("here");
+    console.log(email);
+    console.log(password);
+    const testUser = {
+      email: email,
+      password: password,
+    };
 
-    window.location = "/home";
+    axios
+      .post(`http://localhost:8081/login/authenticate`, testUser)
+      .then((res) => {
+        window.location = "/home";
+      });
+
+    //
   }
 
   return (
