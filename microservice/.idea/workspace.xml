@@ -27,7 +27,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
+    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/summary/summary.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/respository/TimesheetRespository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/timesheet.iml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
