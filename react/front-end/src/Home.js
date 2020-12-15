@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Summary from "./Summary";
 import TimeSheet from "./Timesheet";
 import Profile from "./Profile";
+import Login from "./Login";
+
 export default function Home() {
   return (
     <Router>
@@ -18,7 +20,9 @@ export default function Home() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <li></li>
+          <li>
+            <Link to="/logout">Log Out</Link>
+          </li>
         </ul>
         <hr />
         <Switch>
@@ -30,6 +34,9 @@ export default function Home() {
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/logout">
+            <Login />
           </Route>
         </Switch>
       </div>

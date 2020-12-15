@@ -14,8 +14,7 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(email);
-    console.log(password);
+
     const testUser = {
       email: email,
       password: password,
@@ -24,6 +23,8 @@ export default function Login() {
     axios
       .post(`http://localhost:8081/login/authenticate`, testUser)
       .then((res) => {
+        const user = res.data;
+        localStorage.setItem("userID", user.id);
         window.location = "/home";
       });
 
