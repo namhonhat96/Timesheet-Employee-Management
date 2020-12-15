@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f60d2e9-0401-43a9-95c8-834cd245d79f" name="Default Changelist" comment="" />
+    <list default="true" id="4f60d2e9-0401-43a9-95c8-834cd245d79f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,17 +40,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="JavaSE-1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -64,6 +60,9 @@
       <updated>1607969311932</updated>
       <workItem from="1607969313391" duration="511000" />
       <workItem from="1607969829285" duration="568000" />
+      <workItem from="1607972464754" duration="185000" />
+      <workItem from="1607972664453" duration="117000" />
+      <workItem from="1607972816944" duration="46000" />
     </task>
     <servers />
   </component>
@@ -80,8 +79,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1453" y="253" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607972755638">
+      <screen x="-1869" y="63" width="1869" height="1057" />
+    </state>
+    <state x="-1453" y="253" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607972755638" />
     <state x="-1525" y="254" key="new project wizard" timestamp="1607970306213">
       <screen x="-1868" y="63" width="1868" height="1057" />
     </state>
