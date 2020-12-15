@@ -13,4 +13,10 @@ public class TimesheetController {
     public ResponseEntity<String> getMessage() {
         return ResponseEntity.ok("timesheet works");
     }
+
+    //list the summary the week
+
+    // list the timesheet page
+
+    // Enter the timesheet
 }
