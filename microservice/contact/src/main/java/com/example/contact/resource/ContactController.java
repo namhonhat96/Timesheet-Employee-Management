@@ -23,12 +23,11 @@ public class ContactController {
     @PostMapping("update")
     public void updateTestByID(@RequestBody Contact contact){
         Contact validateContact = this.contactRepository.findContactById(contact.getId());
-        System.out.println("Contact ID:" + contact.getId());
         if(validateContact != null){
             this.contactRepository.delete(validateContact);
             this.contactRepository.save(contact);
         }else{
-            System.out.println("No Record Found");
+            System.out.println("Contact Record Not Found");
         }
     }
 }

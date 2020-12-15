@@ -4,6 +4,7 @@ import "./profile.css";
 
 export default class Profile extends React.Component {
   state = {
+    contactID: "",
     phoneNumber: "",
     email: "",
     eContactName1: "",
@@ -18,7 +19,9 @@ export default class Profile extends React.Component {
   componentDidMount() {
     axios.get(`http://localhost:8085/contact/1`).then((res) => {
       const testExample = res.data;
+      console.log(testExample.eContactId);
       this.setState({
+        contactID: testExample.id,
         phoneNumber: testExample.phoneNumber,
         email: testExample.email,
         addressId: testExample.addressId,
@@ -47,10 +50,12 @@ export default class Profile extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const testContact = {
+      id: this.state.contactID,
       phoneNumber: this.state.phoneNumber,
       email: this.state.email,
     };
 
+    console.log("eContactID: " + this.state.eContactId);
     const testAddress = {
       id: this.state.addressId,
       homeAddress: this.state.homeAddress,
@@ -76,7 +81,7 @@ export default class Profile extends React.Component {
       .post(`http://localhost:8085/econtact/update`, testEContact)
       .then((res) => {});
 
-    window.location = "/profile";
+    // window.location = "/profile";
   };
 
   handleChange1 = (event) => {

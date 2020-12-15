@@ -28,7 +28,7 @@ public class EContactController {
             this.eContactRepository.delete(validateEContact);
             this.eContactRepository.save(eContact);
         }else{
-            System.out.println("No Record Found");
+            System.out.println("EContact Record Not Found");
         }
     }
 }

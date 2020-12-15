@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackageClasses = Contact.class)
 @Configuration
 public class ContactDBConfig {
-
+//
 //    @Bean("contact")
 //    CommandLineRunner commandLineRunner(ContactRepository contactRepository) {
 //        return strings -> {
