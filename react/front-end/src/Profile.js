@@ -18,7 +18,6 @@ export default class Profile extends React.Component {
 
   componentDidMount() {
     let userId = localStorage.getItem("userID");
-    console.log(userId);
     axios.get(`http://localhost:8082/contact/` + userId).then((res) => {
       const testExample = res.data;
       console.log(testExample.eContactId);
@@ -84,7 +83,7 @@ export default class Profile extends React.Component {
       .post(`http://localhost:8082/econtact/update`, testEContact)
       .then((res) => {});
 
-    // window.location = "/profile";
+    window.location = "/profile";
   };
 
   handleChange1 = (event) => {
