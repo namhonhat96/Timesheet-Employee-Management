@@ -22,13 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
-=======
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,21 +45,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-<<<<<<< Updated upstream
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-=======
->>>>>>> Stashed changes
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -74,7 +71,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
+  <component name="RunManager" selected="Spring Boot.AuthServerApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -147,18 +144,12 @@
       <option name="presentableId" value="Default" />
       <updated>1607971653708</updated>
       <workItem from="1607971655130" duration="678000" />
-<<<<<<< Updated upstream
-      <workItem from="1607986834612" duration="115000" />
-=======
-      <workItem from="1607987021752" duration="41000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-<<<<<<< Updated upstream
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -171,16 +162,41 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="23" key="SettingsEditor" timestamp="1607986876542">
-      <screen x="0" y="23" width="1440" height="801" />
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom" timestamp="1607991357474">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="23" key="SettingsEditor/0.23.1440.801/1440.-157.1920.1057@0.23.1440.801" timestamp="1607986876542" />
-=======
-  <component name="WindowStateProjectService">
-    <state x="208" y="23" key="SettingsEditor" timestamp="1607987061601">
-      <screen x="0" y="23" width="1440" height="801" />
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357474" />
+    <state width="1398" height="203" key="GridCell.Tab.0.center" timestamp="1607991357474">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="23" key="SettingsEditor/0.23.1440.801/1440.-157.1920.1057@0.23.1440.801" timestamp="1607987061601" />
->>>>>>> Stashed changes
+    <state width="1398" height="203" key="GridCell.Tab.0.center/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357474" />
+    <state width="1398" height="203" key="GridCell.Tab.0.left" timestamp="1607991357473">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.left/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357473" />
+    <state width="1398" height="203" key="GridCell.Tab.0.right" timestamp="1607991357474">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.right/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357474" />
+    <state width="958" height="203" key="GridCell.Tab.1.bottom" timestamp="1607991357471">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.bottom/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357471" />
+    <state width="958" height="203" key="GridCell.Tab.1.center" timestamp="1607991357470">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.center/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357470" />
+    <state width="958" height="203" key="GridCell.Tab.1.left" timestamp="1607991357469">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.left/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357469" />
+    <state width="958" height="203" key="GridCell.Tab.1.right" timestamp="1607991357470">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.right/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991357470" />
+    <state x="208" y="23" key="SettingsEditor" timestamp="1607991080185">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.877/1440.-157.1920.967@0.23.1440.877" timestamp="1607991080185" />
   </component>
 </project>
