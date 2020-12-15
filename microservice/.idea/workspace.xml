@@ -30,7 +30,10 @@
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/pojo/Template.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/pojo/Template.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/front-end/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +76,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
@@ -217,7 +223,7 @@
       <workItem from="1607975820440" duration="2277000" />
       <workItem from="1607978500306" duration="5776000" />
       <workItem from="1607992784859" duration="1449000" />
-      <workItem from="1608047862477" duration="1066000" />
+      <workItem from="1608047862477" duration="2080000" />
     </task>
     <servers />
   </component>
