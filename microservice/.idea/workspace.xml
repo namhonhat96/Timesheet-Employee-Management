@@ -18,104 +18,16 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:upstream" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_annotations_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_infradna_tool_bridge_method_annotation_1_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysema_codegen_codegen_0_6_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysema_commons_mysema_commons_lang_0_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_apt_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_codegen_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_core_4_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_mongodb_4_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_core_compiler_ecj_4_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_2_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongo_java_driver_3_11_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_0_9_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/summary/src/main/java/com/example/summary/pojo/Summary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/pojo/Day.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/pojo/Template.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/pojo/TimeSheet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/respository/TimesheetRespository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_addons_reactor_extra_3_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_13_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_41.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_41.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_18_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jakarta_el_3_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_6_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_6_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_4_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_4_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_sync_4_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_cache_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_mongodb_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_mongodb_3_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact/contact.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contact/contact.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary/summary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/summary/summary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/src/test/java/com/example/timesheet/TimesheetApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/test/java/com/example/timesheet/TimesheetRespositoryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/timesheet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/timesheet.iml" afterDir="false" />
-    </list>
+    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +36,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -140,13 +51,15 @@
     </option>
   </component>
   <component name="ProjectId" id="1ley3T44i36nIuHkLUdeBq7yY64" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mongo" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -156,6 +69,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -169,7 +84,18 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthServerApplication">
+  <component name="RunManager" selected="Spring Boot.TimesheetApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in auth-server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-server" />
       <option name="PACKAGE_NAME" value="" />
@@ -178,7 +104,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="auth-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bfs.authserver.AuthServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthServerApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-server" />
       <extension name="coverage">
         <pattern>
@@ -187,6 +120,13 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AuthServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="auth-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.authserver.AuthServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,17 +173,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.All in auth-server" />
+      <item itemvalue="Spring Boot.AuthServerApplication" />
+      <item itemvalue="Spring Boot.SummaryApplication" />
+      <item itemvalue="Spring Boot.AuthServerApplication (1)" />
+      <item itemvalue="Spring Boot.ConfigServerApplication" />
+      <item itemvalue="Spring Boot.ContactApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.MicroDiscoveryApplication" />
+      <item itemvalue="Spring Boot.TimesheetApplication" />
+      <item itemvalue="Spring Boot.AuthServerApplication (2)" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.AuthServerApplication" />
+        <item itemvalue="Spring Boot.AuthServerApplication (2)" />
         <item itemvalue="JUnit.All in auth-server" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
@@ -258,12 +207,12 @@
       <workItem from="1607974305257" duration="1383000" />
       <workItem from="1607975820440" duration="2277000" />
       <workItem from="1607978500306" duration="5776000" />
-      <workItem from="1608001817560" duration="6766000" />
+      <workItem from="1607992784859" duration="1449000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -277,119 +226,114 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="372" y="116" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1608006939483">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="372" y="116" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1608006939483" />
-    <state x="234" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608001236156">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="234" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1608001236156" />
-    <state x="731" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1608007947250">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="731" y="100" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1608007947250" />
-    <state x="372" y="104" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608007380147">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="372" y="104" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1608007380147" />
-    <state x="422" y="116" key="FileChooserDialogImpl" timestamp="1608003870592">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="422" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1608003870592" />
-    <state width="869" height="137" key="GridCell.Tab.0.bottom" timestamp="1608007000841">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="518" height="288" key="GridCell.Tab.0.bottom" timestamp="1608042855354">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.0.bottom/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870960" />
     <state width="1166" height="318" key="GridCell.Tab.0.bottom/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261504" />
     <state width="1166" height="318" key="GridCell.Tab.0.bottom/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806910" />
-    <state width="869" height="137" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1608007000841" />
     <state width="1204" height="348" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425907" />
+    <state width="518" height="288" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1608042855354" />
     <state width="1166" height="339" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559041" />
     <state width="1166" height="339" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164970" />
     <state width="1166" height="339" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471513" />
-    <state width="869" height="137" key="GridCell.Tab.0.center" timestamp="1608007000840">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.0.bottom/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085078" />
+    <state width="1166" height="339" key="GridCell.Tab.0.bottom/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217663" />
+    <state width="518" height="288" key="GridCell.Tab.0.center" timestamp="1608042855353">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.0.center/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870960" />
     <state width="1166" height="318" key="GridCell.Tab.0.center/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261503" />
     <state width="1166" height="318" key="GridCell.Tab.0.center/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806909" />
-    <state width="869" height="137" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1608007000840" />
     <state width="1204" height="348" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425895" />
+    <state width="518" height="288" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1608042855353" />
     <state width="1166" height="339" key="GridCell.Tab.0.center/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559040" />
     <state width="1166" height="339" key="GridCell.Tab.0.center/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164969" />
     <state width="1166" height="339" key="GridCell.Tab.0.center/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471512" />
-    <state width="869" height="137" key="GridCell.Tab.0.left" timestamp="1608007000840">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.0.center/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085077" />
+    <state width="1166" height="339" key="GridCell.Tab.0.center/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217662" />
+    <state width="518" height="288" key="GridCell.Tab.0.left" timestamp="1608042855352">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.0.left/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870959" />
     <state width="1166" height="318" key="GridCell.Tab.0.left/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261503" />
     <state width="1166" height="318" key="GridCell.Tab.0.left/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806908" />
-    <state width="869" height="137" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1608007000840" />
     <state width="1204" height="348" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425893" />
+    <state width="518" height="288" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1608042855352" />
     <state width="1166" height="339" key="GridCell.Tab.0.left/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559040" />
     <state width="1166" height="339" key="GridCell.Tab.0.left/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164969" />
     <state width="1166" height="339" key="GridCell.Tab.0.left/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471512" />
-    <state width="869" height="137" key="GridCell.Tab.0.right" timestamp="1608007000841">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.0.left/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085077" />
+    <state width="1166" height="339" key="GridCell.Tab.0.left/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217662" />
+    <state width="518" height="288" key="GridCell.Tab.0.right" timestamp="1608042855354">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.0.right/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870960" />
     <state width="1166" height="318" key="GridCell.Tab.0.right/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261504" />
     <state width="1166" height="318" key="GridCell.Tab.0.right/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806909" />
-    <state width="869" height="137" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1608007000841" />
     <state width="1204" height="348" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425907" />
+    <state width="518" height="288" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1608042855354" />
     <state width="1166" height="339" key="GridCell.Tab.0.right/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559041" />
     <state width="1166" height="339" key="GridCell.Tab.0.right/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164970" />
     <state width="1166" height="339" key="GridCell.Tab.0.right/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471513" />
-    <state width="869" height="137" key="GridCell.Tab.1.bottom" timestamp="1608007000843">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.0.right/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085077" />
+    <state width="1166" height="339" key="GridCell.Tab.0.right/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217663" />
+    <state width="518" height="288" key="GridCell.Tab.1.bottom" timestamp="1608042855356">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.1.bottom/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870961" />
     <state width="1166" height="318" key="GridCell.Tab.1.bottom/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261506" />
     <state width="1166" height="318" key="GridCell.Tab.1.bottom/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806911" />
-    <state width="869" height="137" key="GridCell.Tab.1.bottom/0.0.1280.720@0.0.1280.720" timestamp="1608007000843" />
     <state width="1204" height="348" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425910" />
+    <state width="518" height="288" key="GridCell.Tab.1.bottom/0.23.1440.827@0.23.1440.827" timestamp="1608042855356" />
     <state width="1166" height="339" key="GridCell.Tab.1.bottom/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559043" />
     <state width="1166" height="339" key="GridCell.Tab.1.bottom/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164971" />
     <state width="1166" height="339" key="GridCell.Tab.1.bottom/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471515" />
-    <state width="869" height="137" key="GridCell.Tab.1.center" timestamp="1608007000842">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.1.bottom/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085078" />
+    <state width="1166" height="339" key="GridCell.Tab.1.bottom/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217665" />
+    <state width="518" height="288" key="GridCell.Tab.1.center" timestamp="1608042855355">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.1.center/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870961" />
     <state width="1166" height="318" key="GridCell.Tab.1.center/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261505" />
     <state width="1166" height="318" key="GridCell.Tab.1.center/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806910" />
-    <state width="869" height="137" key="GridCell.Tab.1.center/0.0.1280.720@0.0.1280.720" timestamp="1608007000842" />
     <state width="1204" height="348" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425909" />
+    <state width="518" height="288" key="GridCell.Tab.1.center/0.23.1440.827@0.23.1440.827" timestamp="1608042855355" />
     <state width="1166" height="339" key="GridCell.Tab.1.center/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559042" />
     <state width="1166" height="339" key="GridCell.Tab.1.center/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164971" />
     <state width="1166" height="339" key="GridCell.Tab.1.center/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471514" />
-    <state width="869" height="137" key="GridCell.Tab.1.left" timestamp="1608007000841">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.1.center/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085078" />
+    <state width="1166" height="339" key="GridCell.Tab.1.center/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217664" />
+    <state width="518" height="288" key="GridCell.Tab.1.left" timestamp="1608042855355">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.1.left/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870961" />
     <state width="1166" height="318" key="GridCell.Tab.1.left/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261505" />
     <state width="1166" height="318" key="GridCell.Tab.1.left/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806910" />
-    <state width="869" height="137" key="GridCell.Tab.1.left/0.0.1280.720@0.0.1280.720" timestamp="1608007000841" />
     <state width="1204" height="348" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425908" />
+    <state width="518" height="288" key="GridCell.Tab.1.left/0.23.1440.827@0.23.1440.827" timestamp="1608042855355" />
     <state width="1166" height="339" key="GridCell.Tab.1.left/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559042" />
     <state width="1166" height="339" key="GridCell.Tab.1.left/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164970" />
     <state width="1166" height="339" key="GridCell.Tab.1.left/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471514" />
-    <state width="869" height="137" key="GridCell.Tab.1.right" timestamp="1608007000843">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1166" height="339" key="GridCell.Tab.1.left/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085078" />
+    <state width="1166" height="339" key="GridCell.Tab.1.left/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217664" />
+    <state width="518" height="288" key="GridCell.Tab.1.right" timestamp="1608042855356">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state width="1166" height="348" key="GridCell.Tab.1.right/-1868.63.1868.1057/0.23.1792.1097@-1868.63.1868.1057" timestamp="1607973870961" />
     <state width="1166" height="318" key="GridCell.Tab.1.right/-1869.63.1869.1057/0.23.1792.1097@-1869.63.1869.1057" timestamp="1607978261506" />
     <state width="1166" height="318" key="GridCell.Tab.1.right/-1871.63.1871.1057/0.23.1792.1097@-1871.63.1871.1057" timestamp="1607975806911" />
-    <state width="869" height="137" key="GridCell.Tab.1.right/0.0.1280.720@0.0.1280.720" timestamp="1608007000843" />
     <state width="1204" height="348" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1607980425909" />
+    <state width="518" height="288" key="GridCell.Tab.1.right/0.23.1440.827@0.23.1440.827" timestamp="1608042855356" />
     <state width="1166" height="339" key="GridCell.Tab.1.right/0.23.1792.1097/-1869.63.1869.1057@-1869.63.1869.1057" timestamp="1607987559043" />
     <state width="1166" height="339" key="GridCell.Tab.1.right/0.23.1792.1097/-1871.63.1871.1057@-1871.63.1871.1057" timestamp="1607986164971" />
     <state width="1166" height="339" key="GridCell.Tab.1.right/0.23.1792.1097/-1872.63.1872.1057@-1872.63.1872.1057" timestamp="1607986471514" />
-    <state width="215" height="477" key="HiddenNamespacesPopup" timestamp="1608000983100">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state width="215" height="477" key="HiddenNamespacesPopup/0.0.1280.720@0.0.1280.720" timestamp="1608000983100" />
+    <state width="1166" height="339" key="GridCell.Tab.1.right/49.23.1743.1097@49.23.1743.1097" timestamp="1607994085078" />
+    <state width="1166" height="339" key="GridCell.Tab.1.right/51.23.1741.1097@51.23.1741.1097" timestamp="1607994217665" />
     <state x="-1381" y="253" key="Maven.ArtifactSearchDialog" timestamp="1607975786337">
       <screen x="-1871" y="63" width="1871" height="1057" />
     </state>

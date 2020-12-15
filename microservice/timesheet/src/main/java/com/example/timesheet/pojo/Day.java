@@ -8,7 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class Day {
-    public Day(String startTime, String endTime, Integer totalHours, Boolean floating, Boolean vacation, Boolean holiday) {
+    public Day(String startTime, String endTime, Integer totalHours, Boolean floating, Boolean vacation,
+            Boolean holiday) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.totalHours = totalHours;
