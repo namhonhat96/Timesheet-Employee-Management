@@ -30,7 +30,6 @@ public class LoginController {
 
     @GetMapping("/test")
     public ResponseEntity<String> login(){
-        System.out.println("------");
         return ResponseEntity.ok("Login");
     }
 
