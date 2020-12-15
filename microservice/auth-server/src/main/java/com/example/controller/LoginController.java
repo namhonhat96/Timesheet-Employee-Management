@@ -30,7 +30,6 @@ public class LoginController {
 
     @GetMapping("/test")
     public ResponseEntity<String> login(){
-        System.out.println("------");
         return ResponseEntity.ok("Login");
     }
 
@@ -47,8 +46,15 @@ public class LoginController {
         if (email == null || !credentials.containsKey(email) || !credentials.get(email).equals(password)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        for(int i = 0; i < userList.size(); i++){
+            User user = userList.get(i);
+            if(user.getEmail().equals(email) && user.getPassword().equals(password)){
+                inputUser.setId(user.getId());
+                break;
+            }
+        }
         String token = JwtUtil.generateToken(signingKey, email);
         CookieUtil.create(httpServletResponse, jwtTokenCookieName, token, false, -1, "localhost");
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity.ok(inputUser);
     }
 }
