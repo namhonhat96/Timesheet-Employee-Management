@@ -24,22 +24,6 @@ export default class Timesheet extends React.Component {
       ],
       //List of days of the week for the table
     });
-    // To calculate the time difference of two dates
-    var d1 = new Date(this.state.dateStart);
-    var d2 = new Date(this.state.dateEnd);
-    const timeDiff = d2.getTime() - d1.getTime();
-
-    // To calculate the no. of days between two dates
-    let days = timeDiff / (1000 * 3600 * 24);
-
-    //to list the days
-    while (days !== 0) {
-      let date = new Date(d2);
-      date.setDate(date.getDate() - days);
-      this.state.dates.push(date);
-      days--;
-    }
-    // console.log(this.state.dates);
   }
 
   handleChange1 = (event) => {
