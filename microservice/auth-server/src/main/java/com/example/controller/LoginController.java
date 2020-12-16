@@ -1,45 +1,60 @@
 package com.example.controller;
 
+import com.example.document.User;
+import com.example.repository.UserRepository;
 import com.example.security.CookieUtil;
 import com.example.security.JwtUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
+@CrossOrigin
+@RequestMapping("/login")
 public class LoginController {
 
     private static final String jwtTokenCookieName = "JWT-TOKEN";
     private static final String signingKey = "signingKey";
-    private static final Map<String, String> credentials = new HashMap<>();
+    private UserRepository userRepository;
 
-    public LoginController() {
-        credentials.put("admin@admin.com", "admin");
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/test")
     public ResponseEntity<String> login(){
-
-        System.out.println("------");
         return ResponseEntity.ok("Login");
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(HttpServletResponse httpServletResponse, String username, String password, String redirect, Model model){
-
-        if (username == null || !credentials.containsKey(username) || !credentials.get(username).equals(password)){
-            model.addAttribute("error", "Invalid username or password!");
-            return ResponseEntity.ok("Login");
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> login(HttpServletResponse httpServletResponse, @RequestBody User inputUser){
+        List<User> userList = userRepository.findAll();
+        String email = inputUser.getEmail();
+        String password = inputUser.getPassword();
+        HashMap<String, String> credentials = new HashMap<>();
+        for(int i = 0; i < userList.size(); i++){
+            User user = userList.get(i);
+            credentials.put(user.getEmail(), user.getPassword());
         }
-        String token = JwtUtil.generateToken(signingKey, username);
+        if (email == null || !credentials.containsKey(email) || !credentials.get(email).equals(password)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        for(int i = 0; i < userList.size(); i++){
+            User user = userList.get(i);
+            if(user.getEmail().equals(email) && user.getPassword().equals(password)){
+                inputUser.setId(user.getId());
+                break;
+            }
+        }
+        String token = JwtUtil.generateToken(signingKey, email);
         CookieUtil.create(httpServletResponse, jwtTokenCookieName, token, false, -1, "localhost");
-        return ResponseEntity.ok("login success");
+        return ResponseEntity.ok(inputUser);
     }
 }

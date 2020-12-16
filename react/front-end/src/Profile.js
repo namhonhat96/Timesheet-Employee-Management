@@ -17,7 +17,8 @@ export default class Profile extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8082/contact/1`).then((res) => {
+    let userId = localStorage.getItem("userID");
+    axios.get(`http://localhost:8082/contact/` + userId).then((res) => {
       const testExample = res.data;
       console.log(testExample.eContactId);
       this.setState({
@@ -29,14 +30,14 @@ export default class Profile extends React.Component {
       });
     });
 
-    axios.get(`http://localhost:8082/address/1`).then((res) => {
+    axios.get(`http://localhost:8082/address/` + userId).then((res) => {
       const testExample2 = res.data;
       this.setState({
         homeAddress: testExample2.homeAddress,
       });
     });
 
-    axios.get(`http://localhost:8082/econtact/1`).then((res) => {
+    axios.get(`http://localhost:8082/econtact/` + userId).then((res) => {
       const testExample3 = res.data;
       this.setState({
         eContactName1: testExample3.name1,
@@ -49,6 +50,7 @@ export default class Profile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     const testContact = {
       id: this.state.contactID,
       phoneNumber: this.state.phoneNumber,
@@ -81,7 +83,7 @@ export default class Profile extends React.Component {
       .post(`http://localhost:8082/econtact/update`, testEContact)
       .then((res) => {});
 
-    // window.location = "/profile";
+    window.location = "/profile";
   };
 
   handleChange1 = (event) => {
