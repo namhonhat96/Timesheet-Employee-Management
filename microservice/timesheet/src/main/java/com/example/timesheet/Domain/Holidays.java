@@ -13,11 +13,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collation = "holidays")
+@Document(collection = "holidays")
 public class Holidays {
     @Id
     private String id;
     private Integer year;
 
-    private List<String> holidays;
+    private List<String> holiday;
 }

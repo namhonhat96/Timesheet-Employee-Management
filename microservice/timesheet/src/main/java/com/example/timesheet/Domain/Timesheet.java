@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collation = "Timesheet")
+@Document(collection = "timesheet")
 public class Timesheet {
     @Id
     private String id;
@@ -27,7 +27,6 @@ public class Timesheet {
     private String comment;
 
     private List<Day> days;
-
 
 
 }
