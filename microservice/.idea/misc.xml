@@ -5,7 +5,6 @@
       <list>
         <option value="$PROJECT_DIR$/contact/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/summary/pom.xml" />
         <option value="$PROJECT_DIR$/timesheet/pom.xml" />
         <option value="$PROJECT_DIR$/auth-server/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />

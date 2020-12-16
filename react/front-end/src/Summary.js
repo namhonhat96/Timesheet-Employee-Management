@@ -10,12 +10,7 @@ export default class Summary extends React.Component {
   constructor(props) {
     super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
     this.state = { //state is by default an object
-       summarys: [
-          { WeekEnding: '2020-12-26', hours: '40', submissionStatus: 'Not Started', approvalStatus: 'N/A', option: 'Edit', comment: '' },
-          { WeekEnding: '2020-12-25', hours: '32', submissionStatus: 'Incomplete', approvalStatus: 'Not approved', option: 'Edit', comment: 'A' },
-          { WeekEnding: '2020-12-24', hours: '40', submissionStatus: 'Complete', approvalStatus: 'approved', option: 'View', comment: 'B' }, 
-
-       ],
+       summarys: [],
   
        count: 5
     }
@@ -24,10 +19,10 @@ export default class Summary extends React.Component {
 
  renderTableData() {
       return this.state.summarys.map((student, index) => {
-         const { WeekEnding, hours, submissionStatus, approvalStatus,option,  comment} = student
+         const { id, weekEnding, hours, submissionStatus, approvalStatus,option,  comment} = student
          return (
-            <tr key={WeekEnding}>
-               <td>{WeekEnding}</td>
+            <tr key={id}>
+               <td>{weekEnding}</td>
                <td>{hours}</td>
                <td>{submissionStatus}</td>
                <td>{approvalStatus}</td>
@@ -43,11 +38,13 @@ handleOption(){ }
 
   componentDidMount() {
  
-
     let userId = localStorage.getItem("userID");
-    axios.get(`http://localhost:8084/summary/` + userId).then((res) => {
-      
+    this.userId = "123";
+    console.log(this.userId+"-------")
+    axios.get(`http://localhost:8084/timesheet/summary?userId=`+this.userId).then((res) => {
+      this.setState ({summarys : res.data});
     });
+    
   }
 
   handleShowMore() {
@@ -76,7 +73,7 @@ handleOption(){ }
           {this.renderTableData()}
         </tbody>
       </table>
-
+      
       <button
       type="button"
       className="button-time"
