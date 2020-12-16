@@ -21,7 +21,7 @@ public class HolidaysDBConfig {
     CommandLineRunner commandLineRunner(HolidaysRepository holidaysRepository) {
         return strings -> {
             List<String> holidays = initializeHolidaysList();
-            holidaysRepository.save(new Holidays("1", 2020, holidays));
+            holidaysRepository.save(new Holidays(1, 2020, holidays));
 //            templateRepository.save(new Template(1, 1, days));
 //            templateRepository.save(new Template(2, 2, days));
 //            holidaysRepository.save("1", 2020, );
