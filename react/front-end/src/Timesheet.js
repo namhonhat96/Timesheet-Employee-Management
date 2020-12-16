@@ -3,14 +3,25 @@ import axios from "axios";
 import "./Timesheet.css";
 
 export default class Timesheet extends React.Component {
-  state = { dateEnd: "", billing: "", compensated: "" };
+  state = {
+    dateStart: "",
+    dateEnd: "",
+    billing: "",
+    compensated: "",
+    daysOfWeek: [],
+    dates: [],
+  };
 
   componentDidMount() {
     //retrieve data from backend
     this.setState({
+      dateStart: "2020-12-20",
       dateEnd: "2020-12-26",
       billing: "32",
       compensated: "40",
+      daysOfWeek: [
+        "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday",
+      ],
       //List of days of the week for the table
     });
   }
@@ -32,7 +43,6 @@ export default class Timesheet extends React.Component {
   render() {
     return (
       <div>
-        Timesheet Page
         <div>
           <label for="week">Week Ending:</label>
           <input

@@ -12,11 +12,12 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackageClasses = Contact.class)
 @Configuration
 public class ContactDBConfig {
-//
-//    @Bean("contact")
-//    CommandLineRunner commandLineRunner(ContactRepository contactRepository) {
-//        return strings -> {
-//            contactRepository.save(new Contact(1, "456-789-1122", "user1@gmail.com", 1, 1));
-//        };
-//    }
+
+    @Bean("contact")
+    CommandLineRunner commandLineRunner(ContactRepository contactRepository) {
+        return strings -> {
+            contactRepository.save(new Contact(1, "456-789-1122", "user1@gmail.com", 1, 1));
+            contactRepository.save(new Contact(2, "213-789-1122", "user2@gmail.com", 2, 2));
+        };
+    }
 }
