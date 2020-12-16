@@ -16,8 +16,8 @@ import java.util.List;
 @Document(collection = "template")
 public class Template {
     @Id
-    private String id;
-    private String userId;
+    private Integer id;
+    private Integer userId;
     private List<Day> days;
 
     public Template() {

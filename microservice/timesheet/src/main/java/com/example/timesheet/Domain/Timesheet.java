@@ -16,9 +16,9 @@ import java.util.List;
 @Document(collection = "timesheet")
 public class Timesheet {
     @Id
-    private String id;
+    private Integer id;
 
-    private String userId;
+    private Integer userId;
     private String weekEnding;
     private Integer totalBillingHour;
     private Integer totalCompensatedHour;
