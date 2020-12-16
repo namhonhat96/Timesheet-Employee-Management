@@ -27,7 +27,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="" />
+    <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/example/config/UserDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/example/config/UserDBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/AddressDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/AddressDBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/ContactDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/ContactDBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/EContactDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/EContactDBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,15 +98,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ContactApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -217,6 +222,7 @@
       <workItem from="1607978500306" duration="5776000" />
       <workItem from="1607992784859" duration="1449000" />
       <workItem from="1608047862477" duration="2080000" />
+      <workItem from="1608068202361" duration="940000" />
     </task>
     <servers />
   </component>
