@@ -35,7 +35,7 @@ export default function Login() {
     <div className="Login">
       <h3 className="container">Login Form</h3>
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="10px" controlId="email">
           <Form.Label>Email: </Form.Label>
           <Form.Control
             autoFocus
@@ -44,7 +44,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group size="10px" controlId="password">
           <Form.Label>Password: </Form.Label>
           <Form.Control
             type="password"

@@ -1,7 +1,10 @@
 spring:
   application:
     name: timesheet
-
+  data:
+    mongodb:
+      uri: mongodb://root:123@localhost:27017/
+      database: project3
 server:
   port: 8084
 
