@@ -1,0 +1,38 @@
+input {
+  font-size: 1em;
+  padding: 0.1em;
+  width: 10ch;
+}
+.narrow-font {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.set-width {
+  width: 220px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+div button {
+  float: right;
+  text-align: center;
+  font-size: 15px;
+  color: blue;
+  border-color: blue;
+  padding: 20px 145px;
+}

@@ -21,42 +21,40 @@ public class TimesheetController {
         return ResponseEntity.ok("timesheet works");
     }
 
-    //list the summary the week
+    // list the summary the week
     @GetMapping("/summary")
-    public List<Timesheet> getListOfTimesheet(@RequestParam String userId){
+    public List<Timesheet> getListOfTimesheet(@RequestParam String userId) {
         List<Timesheet> list = timesheetRepo.findAllByUserId(userId);
-        if(list == null){
+        if (list == null) {
             System.out.println("empty list");
         }
-//        List<Timesheet> list = new ArrayList<>();
+        // List<Timesheet> list = new ArrayList<>();
         System.out.println(list);
         return list;
     }
 
     @GetMapping("/week")
-    public Timesheet getOneTimesheet(@RequestParam String userId, @RequestParam String weekEnding){
+    public Timesheet getOneTimesheet(@RequestParam String userId, @RequestParam String weekEnding) {
         return timesheetRepo.findByUserIdAndWeekEnding(userId, weekEnding);
     }
 
-
     @PostMapping("/add")
-    public ResponseEntity<String> addTimesheet(@RequestBody Timesheet timesheet){
-//        Timesheet timesheet = new Timesheet();
-//        timesheet.setUserId("123");
-//        timesheet.setSubmissionStatus(1);
-//        timesheet.setApprovalStatus(2);
+    public ResponseEntity<String> addTimesheet(@RequestBody Timesheet timesheet) {
+        // Timesheet timesheet = new Timesheet();
+        // timesheet.setUserId("123");
+        // timesheet.setSubmissionStatus(1);
+        // timesheet.setApprovalStatus(2);
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Add timesheet");
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet){
-//        Timesheet timesheet = timesheetRepo.findByUserIdAndWeekEnding("12","12");
-//        timesheet.setSubmissionStatus(1);
-//        timesheet.setApprovalStatus(2);
-//        timesheet.setComment("New update");
+    public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
+        // Timesheet timesheet = timesheetRepo.findByUserIdAndWeekEnding("12","12");
+        // timesheet.setSubmissionStatus(1);
+        // timesheet.setApprovalStatus(2);
+        // timesheet.setComment("New update");
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Update timesheet");
     }
-
 }

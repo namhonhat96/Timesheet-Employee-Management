@@ -11,8 +11,8 @@
         <module name="timesheet" />
         <module name="config-server" />
         <module name="micro-discovery" />
-        <module name="auth-server" />
         <module name="contact" />
+        <module name="auth-server" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -22,7 +22,7 @@
       <module name="contact" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="micro-discovery" target="1.8" />
-      <module name="summary" target="1.8" />
+      <module name="summary" target="1.5" />
       <module name="timesheet" target="1.8" />
     </bytecodeTargetLevel>
   </component>
