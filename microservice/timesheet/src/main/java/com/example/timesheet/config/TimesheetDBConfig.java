@@ -39,12 +39,6 @@ public class TimesheetDBConfig {
 
         Calendar ComparedDate = Calendar.getInstance();
 
-
-//        date.add(Calendar.YEAR,-1);//日期减1年
-//        date.add(Calendar.MONTH,3);//日期加3个月
-//        date.add(Calendar.DAY_OF_YEAR,10);//日期加10天
-//        Date dt1=date.getTime();
-
         List<Day> dayList1 = templateRepository.findByUserId(userId).getDays();
         for(int i=0; i<dayList1.size(); i++) {
             if(i==0) {
