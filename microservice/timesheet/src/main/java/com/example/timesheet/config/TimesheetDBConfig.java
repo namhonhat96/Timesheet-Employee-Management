@@ -127,8 +127,93 @@ public class TimesheetDBConfig {
         return dayList1;
     }
 
-    public List<Day> initializeDayList2(){
-        List<Day> dayList2 = new ArrayList<>();
+    public List<Day> initializeDayList2(Integer userId, String weekEnding)throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date weekEndingDate = sdf.parse(weekEnding);
+        Calendar ComparedDate = Calendar.getInstance();
+        Holidays holidays = holidaysRepository.findByYear(2020);
+        if(holidays == null) {
+            System.out.println("null");
+        }
+        List<String> holidaysDates = holidays.getHoliday();
+        List<Day> dayList2 = templateRepository.findByUserId(userId).getDays();
+        for(int i=0; i<dayList2.size(); i++) {
+            if(i==0) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -6);
+
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+
+                if(holidaysDates.contains(curDate)) {
+                    dayList2.get(i).setHoliday(true);
+                }
+                else {
+                    dayList2.get(i).setHoliday(false);
+                }
+                dayList2.get(i).setDay("Sunday");
+            }
+            else if(i==1) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -5);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList2.get(i).setHoliday(true);
+                }
+                else {
+                    dayList2.get(i).setHoliday(false);
+                }
+                dayList2.get(i).setDay("Monday");
+            }
+            else if(i==2) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -4);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                dayList2.get(i).setDay("Tuesday");
+            }
+            else if(i==3) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -3);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                dayList2.get(i).setDay("Wednesday");
+            }
+            else if(i==4) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -2);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                dayList2.get(i).setDay("Thursday");
+            }
+            else if(i==5) {
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, -1);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList2.get(i).setHoliday(true);
+                }
+                else {
+                    dayList2.get(i).setHoliday(false);
+                }
+                dayList2.get(i).setDay("Friday");
+            }
+            else{
+                Calendar date = ComparedDate;
+                date.setTime(weekEndingDate);
+                String curDate = sdf.format(date.getTime());
+                dayList2.get(i).setDate(curDate);
+                dayList2.get(i).setDay("Saturday");
+            }
+        }
         return dayList2;
     }
 }
