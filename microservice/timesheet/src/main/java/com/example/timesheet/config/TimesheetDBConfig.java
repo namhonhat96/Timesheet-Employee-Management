@@ -34,17 +34,17 @@ public class TimesheetDBConfig {
             List<Day> days = initializeDayList1(1,"12/26/2020", 2020);
             List<Day> days2 = initializeDayList1(1,"12/19/2020", 2020);
             List<Day> days3 = initializeDayList1(1,"12/12/2020", 2020);
-            List<Day> days4 = initializeDayList1(1,"12/11/2020", 2020);
-            List<Day> days5 = initializeDayList1(1,"12/09/2020", 2020);
-            List<Day> days6 = initializeDayList1(1,"12/08/2020", 2020);
+            List<Day> days4 = initializeDayList1(1,"12/05/2020", 2020);
+            List<Day> days5 = initializeDayList1(1,"11/28/2020", 2020);
+            List<Day> days6 = initializeDayList1(1,"11/21/2020", 2020);
 
             //Initialize timesheet summary for user 1
             timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Not Started", "Not approved", "", days));
             timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incomplete", "Not approved", "", days2));
             timesheetRepository.save(new Timesheet(3, 1, "12/12/2020", 40, 40, "Not Started", "Approved", "", days3));
-            timesheetRepository.save(new Timesheet(4, 1, "12/11/2020", 40, 40, "Completed", "Approved", "", days4));
-            timesheetRepository.save(new Timesheet(5, 1, "12/09/2020", 40, 40, "Completed", "Approved", "", days5));
-            timesheetRepository.save(new Timesheet(6, 1, "12/08/2020", 40, 40, "Completed", "Approved", "", days6));
+            timesheetRepository.save(new Timesheet(4, 1, "12/05/2020", 40, 40, "Completed", "Approved", "", days4));
+            timesheetRepository.save(new Timesheet(5, 1, "11/28/2020", 40, 40, "Completed", "Approved", "", days5));
+            timesheetRepository.save(new Timesheet(6, 1, "11/21/2020", 40, 40, "Completed", "Approved", "", days6));
 
 
         };
