@@ -7,7 +7,7 @@ import com.example.timesheet.Domain.Timesheet;
 
 import com.example.timesheet.Repository.HolidaysRepository;
 import com.example.timesheet.Repository.PTORepository;
-import com.example.timesheet.repository.TimesheetRepository;
+import com.example.timesheet.Repository.TimesheetRepository;
 import com.example.timesheet.repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
