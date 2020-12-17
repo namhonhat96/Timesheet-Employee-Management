@@ -24,7 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/front-end/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TimesheetDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TimesheetDBConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -50,7 +50,7 @@ public class TimesheetController {
     @PostMapping("/add")
     public ResponseEntity<String> addTimesheet() {
         Timesheet timesheet = new Timesheet();
-        timesheet.setUserId("1");
+        timesheet.setUserId(1);
         timesheet.setSubmissionStatus(0);
         timesheet.setApprovalStatus(0);
         Day mon = new Day("Monday", "2020/12/14", "8:00", "18:00", 8.00, false, false, false);

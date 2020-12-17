@@ -29,11 +29,6 @@ public class TimesheetDBConfig {
     @Autowired
     HolidaysRepository holidaysRepository;
 
-
-
-
-
-
     @Bean("timesheet")
     CommandLineRunner commandLineRunner(TimesheetRepository timesheetRepository) {
         return strings -> {
