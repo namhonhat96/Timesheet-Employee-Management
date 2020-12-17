@@ -39,7 +39,7 @@ handleOption(){ }
   componentDidMount() {
  
     let userId = localStorage.getItem("userID");
-    this.userId = "123";
+    this.userId = "1";
     console.log(this.userId+"-------")
     axios.get(`http://localhost:8084/timesheet/summary?userId=`+this.userId).then((res) => {
       this.setState ({summarys : res.data});
