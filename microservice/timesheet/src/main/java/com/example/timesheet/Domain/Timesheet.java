@@ -18,15 +18,15 @@ public class Timesheet {
     @Id
     private String id;
 
-    private String userId;
-    private String weekEnding;
-    private Integer totalBillingHour;
-    private Integer totalCompensatedHour;
-    private Integer submissionStatus;
-    private Integer approvalStatus;
+    private String userId;                  //init
+    private String weekEnding;               //init
+    private Integer totalBillingHour;        //init
+    private Integer totalCompensatedHour;    //init
+    private Integer submissionStatus;        //init
+    private Integer approvalStatus;          //init
     private String comment;
 
-    private List<Day> days;
+    private List<Day> days;                  //init template
 
 
 }
