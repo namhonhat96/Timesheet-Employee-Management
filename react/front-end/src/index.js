@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./login";
 import Home from "./Home";
 import "./index.css";
+import TimeSheet from "./Timesheet";
+import Summary from "./Summary";
+import ViewTimesheet from "./ViewTimesheet";
+import Profile from "./Profile";
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>;
 
 function HomePage() {

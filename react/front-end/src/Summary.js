@@ -1,72 +1,58 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
-import { useHistory } from "react-router-dom";
 
 export default class Summary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       summarys: [],
-      count: 5,
-      show: "Show More",
     };
   }
 
   renderTableData() {
-    return this.state.summarys
-      .slice(0, this.state.count)
-      .map((summary, index) => {
-        const {
-          id,
-          weekEnding,
-          totalBillingHour,
-          submissionStatus,
-          approvalStatus,
-          comment,
-        } = summary;
-        let option = "";
-
-        if (submissionStatus === "Completed") {
-          option = (
-            <a href="/view" onClick={this.handleOption(summary)}>
-              {" "}
-              View
-            </a>
-          );
-        } else if (submissionStatus === "Incomplete") {
-          option = (
-            <a href="/timesheet" onClick={this.handleOption(summary)}>
-              {" "}
-              Edit
-            </a>
-          );
-        } else {
-          option = (
-            <a href="/timesheet" onClick={this.handleOption(summary)}>
-              {" "}
-              Start
-            </a>
-          );
-        }
-
-        return (
-          <tr key={id}>
-            <td>{weekEnding}</td>
-            <td>{totalBillingHour}</td>
-            <td>{submissionStatus}</td>
-            <td>{approvalStatus}</td>
-            <td>{option}</td>
-            <td>{comment}</td>
-          </tr>
+    return this.state.summarys.map((summary, index) => {
+      const {
+        id,
+        weekEnding,
+        totalBillingHour,
+        submissionStatus,
+        approvalStatus,
+        comment,
+      } = summary;
+      let option =
+        submissionStatus === "Completed" ? (
+          <a href="/view" onClick={this.handleOption(summary)}>
+            {" "}
+            View
+          </a>
+        ) : "Incompleted" ? (
+          <a href="/timesheet" onClick={this.handleOption(summary)}>
+            {" "}
+            Edit
+          </a>
+        ) : (
+          <a href="/timesheet" onClick={this.handleOption(summary)}>
+            {" "}
+            Start
+          </a>
         );
-      });
+      return (
+        <tr key={id}>
+          <td>{weekEnding}</td>
+          <td>{totalBillingHour}</td>
+          <td>{submissionStatus}</td>
+          <td>{approvalStatus}</td>
+          <td>{option}</td>
+          <td>{comment}</td>
+        </tr>
+      );
+    });
   }
 
-  handleOption = (student) => {
-    localStorage.setItem("userId", "1");
-
-    localStorage.setItem("weekEnding", student.weekEnding);
+  handleOption = (summary) => (event) => {
+    console.log(summary.weekEnding);
+    localStorage.setItem("userId", 1);
+    localStorage.setItem("weekEnding", summary.weekEnding);
   };
 
   componentDidMount() {
@@ -79,19 +65,11 @@ export default class Summary extends React.Component {
       });
   }
 
-  handleShowMore = () => {
-    if (this.state.count === 5) {
-      this.setState({
-        count: this.state.summarys.length,
-        show: "Show Less",
-      });
-    } else {
-      this.setState({
-        count: 5,
-        show: "Show More",
-      });
-    }
-  };
+  handleShowMore() {
+    this.setState({
+      count: this.state.summarys.length,
+    });
+  }
 
   render() {
     const count = this.count;
@@ -116,7 +94,7 @@ export default class Summary extends React.Component {
           button-time
           onClick={this.handleShowMore}
         >
-          {this.state.show}
+          Show More
         </button>
       </div>
     );
