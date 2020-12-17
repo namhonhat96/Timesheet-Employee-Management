@@ -14,9 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "PTO")
 public class PTO {
     @Id
-    private String id;
+    private Integer id;
 
-    private String userId;
+    private Integer userId;
     private Integer year;
     private Integer floatingCount;
     private Integer vacationCount;

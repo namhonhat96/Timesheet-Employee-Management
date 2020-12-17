@@ -23,6 +23,8 @@ public class ContactController {
     @PostMapping("update")
     public void updateTestByID(@RequestBody Contact contact){
         Contact validateContact = this.contactRepository.findContactById(contact.getId());
+        contact.setAddressId(1);
+        contact.setEContactId(1);
         if(validateContact != null){
             this.contactRepository.delete(validateContact);
             this.contactRepository.save(contact);
