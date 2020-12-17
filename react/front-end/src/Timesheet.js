@@ -165,11 +165,7 @@ export default class Timesheet extends React.Component {
                 <th>{item.startTime}</th>
                 <th>{item.endTime}</th>
                 <th>{item.totalHours}</th>
-                <th><input 
-                      name = "floating"
-                      type = "checkbox"
-                      checked = {item.floating}
-                      onChange ={this.handleCheckboxChange}/></th>
+                <th>{item.floating ? "x" : ""}</th>
                 <th>{item.holiday ? "x" : ""}</th>
                 <th>{item.vacation ? "x" : ""}</th>
               </tr>
