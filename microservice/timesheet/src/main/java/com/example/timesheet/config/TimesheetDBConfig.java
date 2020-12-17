@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,25 +28,22 @@ public class TimesheetDBConfig {
     @Autowired
     HolidaysRepository holidaysRepository;
 
-
-
-
-
-
     @Bean("timesheet")
     CommandLineRunner commandLineRunner(TimesheetRepository timesheetRepository) {
         return strings -> {
             List<Day> days = initializeDayList1(1,"12/26/2020");
-
+            List<Day> days2 = initializeDayList1(1,"12/19/2020");
+            List<Day> days3 = initializeDayList1(1,"12/12/2020");
             //Initialize timesheet summary for user 1
-            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Incompleted", "Not approved", "", days));
+            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Not Started", "Not approved", "", days));
+            timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incompleted", "Not approved", "", days2));
+            timesheetRepository.save(new Timesheet(3, 1, "12/12/2020", 40, 40, "Completed", "Approved", "", days3));
         };
     }
 
     public List<Day> initializeDayList1(Integer userId, String weekEnding) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date weekEndingDate = sdf.parse(weekEnding);
-
         Calendar ComparedDate = Calendar.getInstance();
         Holidays holidays = holidaysRepository.findByYear(2020);
         if(holidays == null) {
@@ -70,8 +66,6 @@ public class TimesheetDBConfig {
                 else {
                     dayList1.get(i).setHoliday(false);
                 }
-
-
                 dayList1.get(i).setDay("Sunday");
             }
             else if(i==1) {
@@ -94,12 +88,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -4);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Tuesday");
             }
             else if(i==3) {
@@ -108,12 +96,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -3);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Wednesday");
             }
             else if(i==4) {
@@ -122,12 +104,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -2);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Thursday");
             }
             else if(i==5) {
@@ -147,25 +123,12 @@ public class TimesheetDBConfig {
             else{
                 Calendar date = ComparedDate;
                 date.setTime(weekEndingDate);
-
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Saturday");
             }
-
         }
         return dayList1;
-    }
-
-    public List<Day> initializeDayList2(){
-        List<Day> dayList2 = new ArrayList<>();
-        return dayList2;
     }
 }
 
