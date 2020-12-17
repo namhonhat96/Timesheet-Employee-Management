@@ -4,7 +4,7 @@ import "./Timesheet.css";
 
 export default class Timesheet extends React.Component {
   state = {
-    // useriD: "",
+    userId: "",
     weekEnding: "",
     weekFormat: "",
     billing: "",
@@ -16,7 +16,8 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = localStorage.getItem("weekEnding");
+    let weekEnding = "12/26/2020";
+
     //retrieve data from backend
     axios
       .get(
@@ -28,6 +29,7 @@ export default class Timesheet extends React.Component {
       .then((res) => {
         const timesheet = res.data;
         this.setState({
+          userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
@@ -55,6 +57,27 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
+  handleCheckboxChange = (event) => {
+    this.setState({ days: event.target.value });
+  };
+
+  handleSave = (event) => {
+    event.preventDefault();
+
+    const newTimesheet = {
+      userId: this.state.userId,
+      weekEnding: this.state.weekEnding,
+      totalBillingHour: this.state.billing,
+      totalCompensatedHour: this.state.compensated,
+      comment: this.state.comment,
+      days: this.state.days,
+    };
+    axios
+      .put("http://localhost:8084/timesheet/updateTimesheet", newTimesheet)
+      .then((res) => {});
+
+    // window.location = "/timesheet"
+  };
   convertFormatedtoNormal(inputDay) {
     let formatDate = new Date(inputDay);
     return (
@@ -101,7 +124,26 @@ export default class Timesheet extends React.Component {
 
   handleSave() {}
 
-  handleDefault() {}
+  handleDefault = (event) => {
+    event.preventDefault();
+
+    const newTemplate = {
+      userId: this.state.userId,
+      days: this.state.days,
+    };
+
+    axios
+      .put("http://localhost:8084/timesheet/updateTemplate", newTemplate)
+      .then((res) => {});
+  };
+
+  handleItem = (index, value) => {
+    let days = this.state.days;
+    days[index].startTime = value;
+    this.setState({
+      days: days,
+    });
+  };
 
   chooseFloatingDay(choseDate) {
     //check Floating Days left
@@ -174,12 +216,95 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
-                <td>{item.day}</td>
-                <td>{item.date}</td>
-                <td>{item.startTime}</td>
-                <td>{item.endTime}</td>
-                <td>{item.totalHours}</td>
-                <td>
+                <th>
+                  <select name="startTime" defaultValue={item.startTime}>
+                    <option value="N/A">N/A</option>
+                    <option value="1:00">1:00</option>
+                    <option value="2:00">2:00</option>
+                    <option value="3:00">3:00</option>
+                    <option value="4:00">4:00</option>
+                    <option value="5:00">5:00</option>
+                    <option value="6:00">6:00</option>
+                    <option value="7:00">7:00</option>
+                    <option value="8:00">8:00</option>
+                    <option value="9:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
+                  </select>
+                </th>
+                <th>
+                  <select name="endTime" defaultValue={item.endTime}>
+                    <option value="N/A">N/A</option>
+                    <option value="1:00">1:00</option>
+                    <option value="2:00">2:00</option>
+                    <option value="3:00">3:00</option>
+                    <option value="4:00">4:00</option>
+                    <option value="5:00">5:00</option>
+                    <option value="6:00">6:00</option>
+                    <option value="7:00">7:00</option>
+                    <option value="8:00">8:00</option>
+                    <option value="9:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
+                  </select>
+                </th>
+
+                <th>
+                  <select name="totalHours" defaultValue={item.totalHours}>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                  </select>
+                </th>
+                <th>
                   {item.floating ? (
                     "x"
                   ) : item.holiday ? (
@@ -191,9 +316,9 @@ export default class Timesheet extends React.Component {
                       Select
                     </button>
                   )}
-                </td>
-                <td>{item.holiday ? "x" : ""}</td>
-                <td>
+                </th>
+                <th>{item.holiday ? "x" : ""}</th>
+                <th>
                   {" "}
                   {item.vacation ? (
                     "x"
@@ -206,7 +331,7 @@ export default class Timesheet extends React.Component {
                       Select
                     </button>
                   )}
-                </td>
+                </th>
               </tr>
             ))}
           </table>

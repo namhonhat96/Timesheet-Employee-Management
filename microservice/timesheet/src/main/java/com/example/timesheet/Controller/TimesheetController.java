@@ -1,19 +1,18 @@
 package com.example.timesheet.Controller;
 
 import com.example.timesheet.Domain.Holidays;
-import com.example.timesheet.Domain.Day;
 import com.example.timesheet.Domain.PTO;
+import com.example.timesheet.Domain.Template;
 import com.example.timesheet.Domain.Timesheet;
 
 import com.example.timesheet.Repository.HolidaysRepository;
 import com.example.timesheet.Repository.PTORepository;
 import com.example.timesheet.repository.TimesheetRepository;
+import com.example.timesheet.repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Random;
 
@@ -26,10 +25,14 @@ public class TimesheetController {
     private TimesheetRepository timesheetRepo;
 
     @Autowired
-    HolidaysRepository holidaysRepository;
+    private HolidaysRepository holidaysRepository;
 
     @Autowired
-    PTORepository ptoRepository;
+    private PTORepository ptoRepository;
+
+    @Autowired
+    private TemplateRepository templateRepository;
+
 
     @GetMapping("/test")
     public ResponseEntity<String> getMessage() {
@@ -59,15 +62,23 @@ public class TimesheetController {
         return ResponseEntity.ok("Add timesheet");
     }
 
-    @PostMapping("/update")
+    @PutMapping("/updateTimesheet")
     public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Update timesheet");
     }
 
+    @PutMapping("/updateDefault")
+    public ResponseEntity<String> updateTemplate(@RequestBody Template template){
+        Template original = templateRepository.findByUserId(template.getUserId());
+        original.setDays(template.getDays());
+        templateRepository.save(original);
+        return ResponseEntity.ok("Update timesheet");
+    }
+
     @GetMapping("/holiday")
-    public Holidays getHolidays(@RequestBody Holidays inputHoliday) {
-        Holidays holidays = holidaysRepository.findByYear(inputHoliday.getYear());
+    public Holidays getHolidays() {
+        Holidays holidays = holidaysRepository.findByYear(2020);
         if (holidays == null) {
             System.out.println("null");
         }
