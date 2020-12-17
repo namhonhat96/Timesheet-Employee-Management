@@ -6,6 +6,7 @@ export default class Timesheet extends React.Component {
   state = {
     // useriD: "",
     weekEnding: "",
+    weekFormat: "",
     billing: 40,
     compensated: 0,
     comment: "",
@@ -16,20 +17,36 @@ export default class Timesheet extends React.Component {
     let uid = "1";
     let weekEnding = "12/26/2020";
     //retrieve data from backend
-    axios.get('http://localhost:8084/timesheet/week?userId='+uid+"&weekEnding="+weekEnding)
-          .then(
-            res=>{
-              const timesheet = res.data;
-              console.log("user id = "+timesheet.userId+"; week: "+ timesheet.weekEnding);
-              this.setState({
-                weekEnding: timesheet.weekEnding,
-                billing: timesheet.totalBillingHour,
-                compensated: timesheet.totalCompensatedHour,
-                days: timesheet.days,
-              });
-              console.log("this state " + this.state.weekEnding);
-            }
-          )
+    axios
+      .get(
+        "http://localhost:8084/timesheet/week?userId=" +
+          uid +
+          "&weekEnding=" +
+          weekEnding
+      )
+      .then((res) => {
+        const timesheet = res.data;
+        console.log(
+          "user id = " + timesheet.userId + "; week: " + timesheet.weekEnding
+        );
+        this.setState({
+          weekEnding: timesheet.weekEnding,
+          billing: timesheet.totalBillingHour,
+          compensated: timesheet.totalCompensatedHour,
+          days: timesheet.days,
+        });
+        console.log("this state " + this.state.weekEnding);
+      });
+    let dateFormat = new Date(weekEnding);
+    console.log(dateFormat);
+    this.setState({
+      weekFormat:
+        dateFormat.getFullYear() +
+        "-" +
+        dateFormat.getMonth() +
+        "-" +
+        dateFormat.getDate(),
+    });
   }
 
   handleChange1 = (event) => {
@@ -56,7 +73,7 @@ export default class Timesheet extends React.Component {
             id="start"
             name="trip-start"
             className="narrow-font set-width"
-            value={this.state.weekEnding}
+            value={this.state.weekFormat}
           ></input>
 
           <label for="billing">Total Billing Hours:</label>
@@ -102,21 +119,21 @@ export default class Timesheet extends React.Component {
               <th>Holiday</th>
               <th>Vacation</th>
             </tr>
-            {this.state.days.map((item,index) =>(
+            {this.state.days.map((item, index) => (
               <tr key={index}>
                 <th>{item.day}</th>
                 <th>{item.date}</th>
                 <th>{item.startTime}</th>
-                <th>{item.endTime}</th> 
+                <th>{item.endTime}</th>
                 <th>{item.totalHours}</th>
-                <th>{item.floating ? 'x' : ''}</th>
-                <th>{item.holiday ? 'x' : ''}</th>
-                <th>{item.vacation ? 'x' : ''}</th>
+                <th>{item.floating ? "x" : ""}</th>
+                <th>{item.holiday ? "x" : ""}</th>
+                <th>{item.vacation ? "x" : ""}</th>
               </tr>
             ))}
           </table>
         </div>
-        
+
         <div>
           <select id="timesheet-select">
             <option value="">--Please choose an option--</option>
