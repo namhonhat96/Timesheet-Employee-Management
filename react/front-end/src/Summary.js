@@ -29,10 +29,36 @@ export default class Summary extends React.Component {
                <td onClick={this.handleOption()}>{option}</td>
                <td>{comment}</td>
 
+<<<<<<< HEAD
             </tr>
          )
       })
    }
+=======
+  renderTableData() {
+    return this.state.summarys.map((student, index) => {
+      const {
+        id,
+        weekEnding,
+        totalBillingHour,
+        submissionStatus,
+        approvalStatus,
+        option,
+        comment,
+      } = student;
+      return (
+        <tr key={id}>
+          <td>{weekEnding}</td>
+          <td>{totalBillingHour}</td>
+          <td>{submissionStatus}</td>
+          <td>{approvalStatus}</td>
+          <td onClick={this.handleOption()}>{option}</td>
+          <td>{comment}</td>
+        </tr>
+      );
+    });
+  }
+>>>>>>> main
 
 handleOption(){ }
 
