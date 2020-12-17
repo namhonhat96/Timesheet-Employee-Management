@@ -16,7 +16,7 @@ export default class Summary extends React.Component {
  renderTableData() {
       return this.state.summarys.map((summary, index) => {
          const { id, weekEnding, totalBillingHour, submissionStatus, approvalStatus,  comment} = summary
-         let option = submissionStatus === "Completed"? <a href="/timesheet/view" onClick={this.handleOption(summary)}> View</a> : "Incomplete" ? <a href="/timesheet" > Eidt</a> : <a href="/timesheet" > Start</a>
+         let option = submissionStatus === "Completed"? <a href="/timesheet/view" onClick={this.handleOption(summary)}> View</a> : "Incomplete" ? <a href="/timesheet" onClick={this.handleOption(summary)}> Eidt</a> : <a href="/timesheet" onClick={this.handleOption(summary)}> Start</a>
          return (
             <tr key={id}>
                <td>{weekEnding}</td>
