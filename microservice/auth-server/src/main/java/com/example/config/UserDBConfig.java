@@ -14,6 +14,7 @@ public class UserDBConfig {
     @Bean("user")
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return strings -> {
+            userRepository.deleteAll();
             userRepository.save(new User(1, "user1@gmail.com", "123456789"));
             userRepository.save(new User(2, "user2@gmail.com", "987654321"));
         };

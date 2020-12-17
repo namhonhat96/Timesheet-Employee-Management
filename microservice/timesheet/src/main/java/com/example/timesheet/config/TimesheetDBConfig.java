@@ -31,9 +31,10 @@ public class TimesheetDBConfig {
     @Bean("timesheet")
     CommandLineRunner commandLineRunner(TimesheetRepository timesheetRepository) {
         return strings -> {
-            List<Day> days = initializeDayList1(1,"12/26/2020");
-            List<Day> days2 = initializeDayList1(1,"12/19/2020");
-            List<Day> days3 = initializeDayList1(1,"12/12/2020");
+            timesheetRepository.deleteAll();
+            List<Day> days = initializeDayList1(1,"12/26/2020", 2020);
+            List<Day> days2 = initializeDayList1(1,"12/19/2020", 2020);
+            List<Day> days3 = initializeDayList1(1,"12/12/2020", 2020);
             //Initialize timesheet summary for user 1
             timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Not Started", "Not approved", "", days));
             timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incompleted", "Not approved", "", days2));
@@ -41,11 +42,11 @@ public class TimesheetDBConfig {
         };
     }
 
-    public List<Day> initializeDayList1(Integer userId, String weekEnding) throws ParseException {
+    public List<Day> initializeDayList1(Integer userId, String weekEnding, Integer year) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date weekEndingDate = sdf.parse(weekEnding);
         Calendar ComparedDate = Calendar.getInstance();
-        Holidays holidays = holidaysRepository.findByYear(2020);
+        Holidays holidays = holidaysRepository.findByYear(year);
         if(holidays == null) {
             System.out.println("null");
         }
@@ -131,16 +132,3 @@ public class TimesheetDBConfig {
         return dayList1;
     }
 }
-
-
-/*
-    private String id;
-    private String userId;
-    private String weekEnding;
-    private Integer totalBillingHour;
-    private Integer totalCompensatedHour;
-    private Integer submissionStatus;
-    private Integer approvalStatus;
-    private String comment;
-    private List<Day> days;
- */

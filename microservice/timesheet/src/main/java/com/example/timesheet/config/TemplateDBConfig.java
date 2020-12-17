@@ -17,6 +17,7 @@ public class TemplateDBConfig {
     @Bean("template")
     CommandLineRunner commandLineRunner(TemplateRepository templateRepository) {
         return strings -> {
+            templateRepository.deleteAll();
             List<Day> days = initializeDayList1();
             templateRepository.save(new Template(1, 1, days));
             templateRepository.save(new Template(2, 2, days));
