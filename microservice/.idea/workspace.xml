@@ -24,14 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d668a8da-453d-4e11-89c9-4de4d414a798" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/example/config/UserDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/example/config/UserDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/AddressDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/AddressDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/ContactDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/ContactDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/EContactDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact/src/main/java/com/example/contact/config/EContactDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/HolidaysDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/HolidaysDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TemplateDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TemplateDBConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TimesheetDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/config/TimesheetDBConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/front-end/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Summary.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Summary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,17 +102,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ContactApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in auth-server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-server" />
       <option name="PACKAGE_NAME" value="" />
@@ -224,7 +208,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -250,11 +234,12 @@
       <workItem from="1608088127077" duration="12552000" />
       <workItem from="1608138002856" duration="7516000" />
       <workItem from="1608169557458" duration="1660000" />
+      <workItem from="1608223389182" duration="300000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

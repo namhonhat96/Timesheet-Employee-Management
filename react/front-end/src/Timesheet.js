@@ -16,12 +16,8 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-<<<<<<< HEAD
     let weekEnding = localStorage.getItem("weekEnding");
-=======
-    let weekEnding = "12/26/2020";
-
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
+    // let weekEnding = "12/26/2020";
     //retrieve data from backend
     axios
       .get(
@@ -60,8 +56,7 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
-<<<<<<< HEAD
-=======
+
   handleCheckboxChange = (event) => {
     this.setState({ days: event.target.value });
   };
@@ -83,7 +78,7 @@ export default class Timesheet extends React.Component {
 
     // window.location = "/timesheet"
   };
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
+
   convertFormatedtoNormal(inputDay) {
     let formatDate = new Date(inputDay);
     return (
@@ -128,12 +123,6 @@ export default class Timesheet extends React.Component {
       });
   };
 
-  handleSave() {}
-<<<<<<< HEAD
-
-  handleDefault() {}
-=======
-
   handleDefault = (event) => {
     event.preventDefault();
 
@@ -154,7 +143,6 @@ export default class Timesheet extends React.Component {
       days: days,
     });
   };
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
 
   render() {
     return (
@@ -217,13 +205,10 @@ export default class Timesheet extends React.Component {
               <tr key={index}>
                 <th>{item.day}</th>
                 <th>{item.date}</th>
-<<<<<<< HEAD
-                <th>{item.startTime}</th>
+                {/* <th>{item.startTime}</th>
                 <th>{item.endTime}</th>
-                <th>{item.totalHours}</th>
-=======
+                <th>{item.totalHours}</th> */}
                 {/* <th>{item.startTime}</th> */}
-
                 <th>
                   <select name="startTime" defaultValue={item.startTime}>
                     <option value="N/A">N/A</option>
@@ -314,7 +299,6 @@ export default class Timesheet extends React.Component {
                 </th>
                 {/* <th>{item.endTime}</th> */}
                 {/* <th>{item.totalHours}</th> */}
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
                 <th>{item.floating ? "x" : ""}</th>
                 <th>{item.holiday ? "x" : ""}</th>
                 <th>{item.vacation ? "x" : ""}</th>

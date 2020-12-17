@@ -17,10 +17,6 @@ export default class Summary extends React.Component {
     };
   }
   //  state = { WeekEnding: "", hours: "", submissionStatus: "", approvalStatus:"", option:"", comment:"" };
-<<<<<<< HEAD
-
-=======
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
   renderTableData() {
     return this.state.summarys.map((student, index) => {
       const {
@@ -44,19 +40,12 @@ export default class Summary extends React.Component {
       );
     });
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
   handleOption() {}
 
   componentDidMount() {
     let userId = localStorage.getItem("userID");
     this.userId = "1";
-<<<<<<< HEAD
-=======
     console.log(this.userId + "-------");
->>>>>>> 46936b916c71b30f79c19a9fae13655b50e44770
     axios
       .get(`http://localhost:8084/timesheet/summary?userId=` + this.userId)
       .then((res) => {
