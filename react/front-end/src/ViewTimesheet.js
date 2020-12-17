@@ -1,40 +1,62 @@
 import React from "react";
 import axios from "axios";
 
-export default class ViewTimesheet extends React.Component {
+export default class Timesheet extends React.Component {
   state = {
+    userId: "",
     weekEnding: "",
-    totalBillingHour: "",
-    totalCompensatedHour: "",
+    weekFormat: "",
+    billing: "",
+    compensated: "",
+    comment: "",
     days: [],
+    dateFormat: "",
   };
 
   componentDidMount() {
+    let uid = 1;
+    let weekEnding = localStorage.getItem("weekEnding");
+
     //retrieve data from backend
-    let id = localStorage.getItem("userID");
-    let weekEnding = "12/08/2018"; //localStorage.getItem("weekEnding") -> get from summary page
     axios
-      .get(`http://localhost:8084/timesheet/week`, id, weekEnding)
+      .get(
+        "http://localhost:8084/timesheet/week?userId=" +
+          uid +
+          "&weekEnding=" +
+          weekEnding
+      )
       .then((res) => {
-        const testExample = res.data;
+        const timesheet = res.data;
         this.setState({
-          weekEnding: testExample.weekEnding,
-          totalBillingHour: testExample.totalBillingHour,
-          totalCompensatedHour: testExample.totalCompensatedHour,
-          days: testExample.days,
+          userId: timesheet.userId,
+          weekEnding: timesheet.weekEnding,
+          billing: timesheet.totalBillingHour,
+          compensated: timesheet.totalCompensatedHour,
+          days: timesheet.days,
         });
       });
+    let dateFormat = new Date(weekEnding);
+    this.setState({
+      weekFormat:
+        dateFormat.getFullYear() +
+        "-" +
+        (dateFormat.getMonth() + 1) +
+        "-" +
+        dateFormat.getDate(),
+    });
   }
 
-  handleChange1 = (event) => {
-    //Calculate base on the working hours
-    this.setState({ billing: event.target.value });
-  };
-
-  handleChange2 = (event) => {
-    //Calculate based on the total hours (working hour + floating day / vacation)
-    this.setState({ compensated: event.target.value });
-  };
+  convertFormatedtoNormal(inputDay) {
+    let formatDate = new Date(inputDay);
+    return (
+      formatDate.getMonth() +
+      1 +
+      "/" +
+      (formatDate.getDate() + 1) +
+      "/" +
+      formatDate.getFullYear()
+    );
+  }
 
   render() {
     return (
@@ -46,7 +68,8 @@ export default class ViewTimesheet extends React.Component {
             id="start"
             name="trip-start"
             className="narrow-font set-width"
-            value={this.state.weekEnding}
+            value={this.state.weekFormat}
+            onChange={this.handleChange3}
           ></input>
 
           <label for="billing">Total Billing Hours:</label>
@@ -55,8 +78,7 @@ export default class ViewTimesheet extends React.Component {
             id="billing"
             name="billing"
             className="narrow-font set-width"
-            value={this.state.totalBillingHour}
-            onChange={this.handleChange1}
+            value={this.state.billing}
           ></input>
           <br />
           <label for="compensate">Total Compensated Hours:</label>
@@ -65,39 +87,34 @@ export default class ViewTimesheet extends React.Component {
             id="compensate"
             name="compensate"
             className="narrow-font set-width"
-            value={this.state.totalCompensatedHour}
-            onChange={this.handleChange2}
+            value={this.state.compensated}
           ></input>
         </div>
         <br />
         <div>
           <table>
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Date</th>
-                <th>Starting Time</th>
-                <th>Ending Time</th>
-                <th>Total Hours</th>
-                <th>Floating Day</th>
-                <th>Holiday</th>
-                <th>Vacation</th>
+            <tr>
+              <th>Day</th>
+              <th>Date</th>
+              <th>Starting Time</th>
+              <th>Ending Time</th>
+              <th>Total Hours</th>
+              <th>Floating Day</th>
+              <th>Holiday</th>
+              <th>Vacation</th>
+            </tr>
+            {this.state.days.map((item, index) => (
+              <tr key={index}>
+                <th>{item.day}</th>
+                <th>{item.date}</th>
+                <th>{item.startTime}</th>
+                <th>{item.endTime}</th>
+                <th>{item.totalHours}</th>
+                <th>{item.floating ? "x" : ""}</th>
+                <th>{item.holiday ? "x" : ""}</th>
+                <th>{item.vacation ? "x" : ""}</th>
               </tr>
-            </thead>
-            <tbody>
-              {this.state.days.map((dayDetail) => (
-                <tr key={dayDetail.id}>
-                  <td>{dayDetail.day}</td>
-                  <td>{dayDetail.date}</td>
-                  <td>{dayDetail.startTime}</td>
-                  <td>{dayDetail.endTime}</td>
-                  <td>{dayDetail.totalHours}</td>
-                  <td>{dayDetail.floating ? "X" : ""}</td>
-                  <td>{dayDetail.vacation ? "X" : ""}</td>
-                  <td>{dayDetail.holiday ? "X" : ""}</td>
-                </tr>
-              ))}
-            </tbody>
+            ))}
           </table>
         </div>
       </div>
