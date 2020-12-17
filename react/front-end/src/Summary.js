@@ -9,14 +9,27 @@ export default class Summary extends React.Component {
     super(props) 
     this.state = {
        summarys: [],
+       count: 5,
+       show: "Show More"
     }
 
  }
 
  renderTableData() {
-      return this.state.summarys.map((summary, index) => {
+      return this.state.summarys.slice(0,this.state.count).map((summary, index) => {
          const { id, weekEnding, totalBillingHour, submissionStatus, approvalStatus,  comment} = summary
-         let option = submissionStatus === "Completed"? <a href="/timesheet/view" onClick={this.handleOption(summary)}> View</a> : "Incomplete" ? <a href="/timesheet" onClick={this.handleOption(summary)}> Eidt</a> : <a href="/timesheet" onClick={this.handleOption(summary)}> Start</a>
+         let option = "";
+
+         if(submissionStatus === "Completed"){
+           option = <a href="/timesheet/view" onClick={this.handleOption(summary)}> View</a>
+         }else if( submissionStatus === "Incomplete"){
+          option = <a href="/timesheet" onClick={this.handleOption(summary)}> Edit</a>
+
+         }else{
+          option = <a href="/timesheet" onClick={this.handleOption(summary)}> Start</a>
+
+         }
+         
          return (
             <tr key={id}>
                <td>{weekEnding}</td>
@@ -30,7 +43,7 @@ export default class Summary extends React.Component {
       })
    }
 
-handleOption(student){ 
+handleOption = (student) => { 
   localStorage.setItem("userId", "1");
 
     localStorage.setItem("weekEnding", student.weekEnding);
@@ -47,11 +60,18 @@ handleOption(student){
     
   }
 
-  handleShowMore() {
-
-    this.setState ({
-      count: this.state.summarys.length
-    });
+  handleShowMore = () =>{
+    if(this.state.count ===5){
+      this.setState ({
+          count: this.state.summarys.length,
+          show: "Show Less"
+        });
+    }else{
+      this.setState ({
+        count: 5,
+        show: "Show More"
+      });
+    }
   }
 
   render() {
@@ -77,9 +97,8 @@ handleOption(student){
       type="button"
       className="button-time"
       button-time
-      onClick={this.handleShowMore}
-    >
-      Show More
+      onClick={this.handleShowMore}>
+      {this.state.show}
     </button>
     </div>
 
