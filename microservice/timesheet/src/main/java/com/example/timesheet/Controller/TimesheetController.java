@@ -1,17 +1,17 @@
 package com.example.timesheet.Controller;
 
 import com.example.timesheet.Domain.Holidays;
-import com.example.timesheet.Domain.Day;
+import com.example.timesheet.Domain.Template;
 import com.example.timesheet.Domain.Timesheet;
 
 import com.example.timesheet.repository.HolidaysRepository;
 import com.example.timesheet.repository.TimesheetRepository;
+import com.example.timesheet.repository.TemplateRepository;
+import org.bouncycastle.util.Times;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -24,6 +24,10 @@ public class TimesheetController {
 
     @Autowired
     HolidaysRepository holidaysRepository;
+
+    @Autowired
+    private TemplateRepository templateRepository;
+
 
     @GetMapping("/test")
     public ResponseEntity<String> getMessage() {
@@ -53,18 +57,28 @@ public class TimesheetController {
         return ResponseEntity.ok("Add timesheet");
     }
 
-    @PostMapping("/update")
+    @PutMapping("/updateTimesheet")
     public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
-        // Timesheet timesheet = timesheetRepo.findByUserIdAndWeekEnding("12","12");
-        // timesheet.setSubmissionStatus(1);
-        // timesheet.setApprovalStatus(2);
-        // timesheet.setComment("New update");
-        timesheetRepo.save(timesheet);
+        Timesheet original = timesheetRepo.findByUserIdAndWeekEnding(timesheet.getUserId(),timesheet.getWeekEnding());
+        original.setDays(timesheet.getDays());
+        original.setComment(timesheet.getComment());
+        original.setApprovalStatus(timesheet.getApprovalStatus());
+        original.setSubmissionStatus(timesheet.getSubmissionStatus());
+        original.setTotalBillingHour(timesheet.getTotalBillingHour());
+        original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
+        timesheetRepo.save(original);
+        return ResponseEntity.ok("Update timesheet");
+    }
+
+    @PutMapping("/updateDefault")
+    public ResponseEntity<String> updateTemplate(@RequestBody Template template){
+        Template original = templateRepository.findByUserId(template.getUserId());
+        original.setDays(template.getDays());
+        templateRepository.save(original);
         return ResponseEntity.ok("Update timesheet");
     }
 
     @GetMapping("/holiday")
-
     public Holidays getHolidays() {
         Holidays holidays = holidaysRepository.findByYear(2020);
         if (holidays == null) {

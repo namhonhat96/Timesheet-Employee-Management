@@ -1,16 +1,12 @@
 package com.example.timesheet.config;
 
-import com.example.timesheet.Domain.Day;
 import com.example.timesheet.Domain.Holidays;
-import com.example.timesheet.Domain.Template;
 import com.example.timesheet.repository.HolidaysRepository;
-import com.example.timesheet.repository.TemplateRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

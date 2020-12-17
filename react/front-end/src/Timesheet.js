@@ -4,17 +4,24 @@ import "./Timesheet.css";
 
 export default class Timesheet extends React.Component {
   state = {
-    // useriD: "",
+    userId: "",
     weekEnding: "",
     weekFormat: "",
     billing: 40,
-    compensated: 0,
+    compensated: 40,
     comment: "",
-    days: [],
+    days: [{
+      startTime: "",
+      endTime: "",
+      totalHours: 0,
+      floating: false,
+      vacation: false,
+      holiday: false,
+    }], 
   };
 
   componentDidMount() {
-    let uid = "1";
+    let uid = localStorage.getItem("userID");
     let weekEnding = "12/26/2020";
     //retrieve data from backend
     axios
@@ -30,6 +37,7 @@ export default class Timesheet extends React.Component {
           "user id = " + timesheet.userId + "; week: " + timesheet.weekEnding
         );
         this.setState({
+          userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
@@ -43,7 +51,7 @@ export default class Timesheet extends React.Component {
       weekFormat:
         dateFormat.getFullYear() +
         "-" +
-        dateFormat.getMonth() +
+        (dateFormat.getMonth()+1) +
         "-" +
         dateFormat.getDate(),
     });
@@ -59,9 +67,40 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
-  handleSave() {}
+  handleCheckboxChange =(event)=> {
+    this.setState({days: event.target.value })
+  }
 
-  handleDefault() {}
+  handleSave = (event)=> {
+    event.preventDefault();
+
+    const newTimesheet = {
+      userId : this.state.userId,
+      weekEnding : this.state.weekEnding,
+      totalBillingHour : this.state.billing,
+      totalCompensatedHour : this.state.compensated,
+      comment : this.state.comment,
+      days : this.state.days,
+    }
+    axios
+      .put('http://localhost:8084/timesheet/updateTimesheet', newTimesheet)
+      .then((res)=>{});
+    
+      // window.location = "/timesheet"
+  }
+
+  handleDefault = (event) =>{
+    event.preventDefault();
+
+    const newTemplate ={
+      userId: this.state.userId,
+      days : this.state.days,
+    }
+
+    axios
+      .put('http://localhost:8084/timesheet/updateTemplate', newTemplate)
+      .then((res)=>{});
+  }
 
   render() {
     return (
@@ -126,7 +165,11 @@ export default class Timesheet extends React.Component {
                 <th>{item.startTime}</th>
                 <th>{item.endTime}</th>
                 <th>{item.totalHours}</th>
-                <th>{item.floating ? "x" : ""}</th>
+                <th><input 
+                      name = "floating"
+                      type = "checkbox"
+                      checked = {item.floating}
+                      onChange ={this.handleCheckboxChange}/></th>
                 <th>{item.holiday ? "x" : ""}</th>
                 <th>{item.vacation ? "x" : ""}</th>
               </tr>

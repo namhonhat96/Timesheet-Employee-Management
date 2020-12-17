@@ -24,7 +24,7 @@ export default class Summary extends React.Component {
             <tr key={id}>
                <td>{weekEnding}</td>
                <td>{hours}</td>
-               <td>{submissionStatus}</td>
+               <td title='hr....'>{submissionStatus}</td>
                <td>{approvalStatus}</td>
                <td onClick={this.handleOption()}>{option}</td>
                <td>{comment}</td>
