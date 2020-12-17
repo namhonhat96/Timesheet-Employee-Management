@@ -23,7 +23,7 @@ export default class Summary extends React.Component {
       const {
         id,
         weekEnding,
-        hours,
+        totalBillingHour,
         submissionStatus,
         approvalStatus,
         option,
@@ -32,7 +32,7 @@ export default class Summary extends React.Component {
       return (
         <tr key={id}>
           <td>{weekEnding}</td>
-          <td>{hours}</td>
+          <td>{totalBillingHour}</td>
           <td>{submissionStatus}</td>
           <td>{approvalStatus}</td>
           <td onClick={this.handleOption()}>{option}</td>

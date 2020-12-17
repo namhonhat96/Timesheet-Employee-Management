@@ -13,6 +13,7 @@ public class AddressDBConfig {
     @Bean("address")
     CommandLineRunner commandLineRunner(AddressRepository addressRepository) {
         return strings -> {
+            addressRepository.deleteAll();
             addressRepository.save(new Address(1, "123 Rosevelt Street, Princeton, New Jersey, 12456"));
             addressRepository.save(new Address(2, "456 Adams Road, Princeton, New Jersey, 08544"));
         };
