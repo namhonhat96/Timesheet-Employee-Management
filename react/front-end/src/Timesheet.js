@@ -16,7 +16,7 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = "12/26/2020";
+    let weekEnding = localStorage.getItem("weekEnding");
 
     //retrieve data from backend
     axios

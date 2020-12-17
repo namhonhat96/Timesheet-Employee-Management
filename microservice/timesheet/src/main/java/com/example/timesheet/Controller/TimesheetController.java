@@ -58,6 +58,10 @@ public class TimesheetController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addTimesheet(@RequestBody Timesheet timesheet) {
+        Timesheet timesheet1 = new Timesheet();
+        timesheet.setId(111);
+        timesheet.setUserId(123);
+
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Add timesheet");
     }

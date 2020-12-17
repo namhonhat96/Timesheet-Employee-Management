@@ -25,8 +25,11 @@ export default function Login() {
       .then((res) => {
         const user = res.data;
         localStorage.setItem("userID", user.id);
-        localStorage.setItem("weekEnding", "12/26/2020"); //use it for now
-        window.location = "/home";
+        if (localStorage.getItem("weekEnding") == null) {
+          localStorage.setItem("weekEnding", "12/19/2020"); //use it for now
+        }
+        localStorage.setItem("loginSuccess", true);
+        window.location = "/summary";
       });
 
     //

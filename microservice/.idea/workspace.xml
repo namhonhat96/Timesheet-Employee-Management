@@ -23,7 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc44d1a8-6601-4de1-a182-56f8761501ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/timesheet/src/main/java/com/example/timesheet/Controller/TimesheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Summary.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Summary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/Timesheet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/ViewTimesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/ViewTimesheet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/front-end/src/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/front-end/src/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
