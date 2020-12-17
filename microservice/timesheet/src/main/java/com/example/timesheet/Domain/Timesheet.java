@@ -17,7 +17,6 @@ import java.util.List;
 public class Timesheet {
     @Id
     private Integer id;
-
     private Integer userId;
     private String weekEnding;
     private Integer totalBillingHour;
@@ -26,7 +25,6 @@ public class Timesheet {
     private Integer approvalStatus;
     private String comment;
 
-    private List<Day> days;
-
+    private List<Day> days; // init template
 
 }
