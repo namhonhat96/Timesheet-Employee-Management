@@ -5,6 +5,7 @@ import Summary from "./Summary";
 import TimeSheet from "./Timesheet";
 import Profile from "./Profile";
 import Login from "./login";
+import ViewTimesheet from "./ViewTimesheet";
 
 export default function Home() {
   return (
@@ -31,6 +32,9 @@ export default function Home() {
           </Route>
           <Route path="/timesheet">
             <TimeSheet />
+          </Route>
+          <Route exact path="/timesheet/view">
+            <ViewTimesheet />
           </Route>
           <Route path="/profile">
             <Profile />

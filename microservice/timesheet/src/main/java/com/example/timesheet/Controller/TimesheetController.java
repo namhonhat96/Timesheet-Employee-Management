@@ -1,6 +1,7 @@
 package com.example.timesheet.Controller;
 
 import com.example.timesheet.Domain.Holidays;
+import com.example.timesheet.Domain.Day;
 import com.example.timesheet.Domain.Timesheet;
 
 import com.example.timesheet.repository.HolidaysRepository;
@@ -9,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/timesheet")
 public class TimesheetController {
@@ -21,6 +24,7 @@ public class TimesheetController {
 
     @Autowired
     HolidaysRepository holidaysRepository;
+
     @GetMapping("/test")
     public ResponseEntity<String> getMessage() {
         return ResponseEntity.ok("timesheet works");
@@ -44,11 +48,19 @@ public class TimesheetController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addTimesheet(@RequestBody Timesheet timesheet) {
-        // Timesheet timesheet = new Timesheet();
-        // timesheet.setUserId("123");
-        // timesheet.setSubmissionStatus(1);
-        // timesheet.setApprovalStatus(2);
+    public ResponseEntity<String> addTimesheet() {
+        Timesheet timesheet = new Timesheet();
+        timesheet.setUserId("1");
+        timesheet.setSubmissionStatus(0);
+        timesheet.setApprovalStatus(0);
+        Day mon = new Day("Monday", "2020/12/14", "8:00", "18:00", 8.00, false, false, false);
+        Day tue = new Day("Tuesday", "2020/12/15", "8:00", "18:00", 8.00, false, false, false);
+        List<Day> week = new ArrayList<>();
+        week.add(mon);
+        week.add(tue);
+        timesheet.setDays(week);
+        timesheet.setSubmissionStatus(2);
+        timesheet.setApprovalStatus(1);
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Add timesheet");
     }
@@ -64,9 +76,10 @@ public class TimesheetController {
     }
 
     @GetMapping("/holiday")
+
     public Holidays getHolidays() {
         Holidays holidays = holidaysRepository.findByYear(2020);
-        if(holidays == null) {
+        if (holidays == null) {
             System.out.println("null");
         }
         return holidays;
