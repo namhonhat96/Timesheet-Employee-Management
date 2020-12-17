@@ -55,36 +55,48 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
+  convertFormatedtoNormal(inputDay) {
+    let formatDate = new Date(inputDay);
+    return (
+      formatDate.getMonth() +
+      1 +
+      "/" +
+      (formatDate.getDate() + 1) +
+      "/" +
+      formatDate.getFullYear()
+    );
+  }
   handleChange3 = (event) => {
     //Calculate based on the total hours (working hour + floating day / vacation)
-    let currentWeek = this.state.weekEnding;
-    let value = event.target.value;
-    if (currentWeek != value) {
-      let newDate = new Date(value);
-      this.setState({
-        weekEnding:
-          newDate.getMonth() +
-          1 +
-          "/" +
-          (newDate.getDate() + 1) +
-          "/" +
-          newDate.getFullYear(),
+    let changedWeek = this.convertFormatedtoNormal(event.target.value);
+    let dateFormat = new Date(changedWeek);
+    this.setState({
+      weekEnding: changedWeek,
+      weekFormat:
+        dateFormat.getFullYear() +
+        "-" +
+        (dateFormat.getMonth() + 1) +
+        "-" +
+        dateFormat.getDate(),
+    });
+    localStorage.setItem("weekEnding", changedWeek);
+    let uid = localStorage.getItem("userID");
+    axios
+      .get(
+        "http://localhost:8084/timesheet/week?userId=" +
+          uid +
+          "&weekEnding=" +
+          changedWeek
+      )
+      .then((res) => {
+        const timesheet = res.data;
+        this.setState({
+          weekEnding: timesheet.weekEnding,
+          billing: timesheet.totalBillingHour,
+          compensated: timesheet.totalCompensatedHour,
+          days: timesheet.days,
+        });
       });
-
-      let dateFormat = new Date(this.state.weekEnding);
-      this.setState({
-        weekFormat:
-          dateFormat.getFullYear() +
-          "-" +
-          (dateFormat.getMonth() + 1) +
-          "-" +
-          dateFormat.getDate(),
-      });
-      console.log(this.state.weekEnding);
-      localStorage.setItem("weekEnding", this.state.weekEnding);
-      console.log(localStorage.getItem("weekEnding"));
-      //window.location = "/timesheet";
-    }
   };
 
   handleSave() {}
