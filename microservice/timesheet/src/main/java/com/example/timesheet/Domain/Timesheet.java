@@ -21,8 +21,8 @@ public class Timesheet {
     private String weekEnding;
     private Integer totalBillingHour;
     private Integer totalCompensatedHour;
-    private Integer submissionStatus;
-    private Integer approvalStatus;
+    private String submissionStatus;
+    private String approvalStatus;
     private String comment;
 
     private List<Day> days; // init template
