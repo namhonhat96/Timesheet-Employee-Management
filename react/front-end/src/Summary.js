@@ -1,61 +1,56 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from 'react-router';
+import { useHistory } from "react-router-dom";
 
 export default class Summary extends React.Component {
-  //Define the variable names from backend pojo
 
-  //create a table to display result
-
-  //componentdidmount
   constructor(props) {
-    super(props); //since we are extending class Table so we have to use super in order to override Component class constructor
+    super(props) 
     this.state = {
-      //state is by default an object
-      summarys: [],
+       summarys: [],
+    }
 
-      count: 5,
-    };
-  }
-  //  state = { WeekEnding: "", hours: "", submissionStatus: "", approvalStatus:"", option:"", comment:"" };
-  renderTableData() {
-    return this.state.summarys.map((student, index) => {
-      const {
-        id,
-        weekEnding,
-        totalBillingHour,
-        submissionStatus,
-        approvalStatus,
-        option,
-        comment,
-      } = student;
-      return (
-        <tr key={id}>
-          <td>{weekEnding}</td>
-          <td>{totalBillingHour}</td>
-          <td>{submissionStatus}</td>
-          <td>{approvalStatus}</td>
-          <td onClick={this.handleOption()}>{option}</td>
-          <td>{comment}</td>
-        </tr>
-      );
-    });
-  }
-  handleOption() {}
+ }
+
+ renderTableData() {
+      return this.state.summarys.map((summary, index) => {
+         const { id, weekEnding, totalBillingHour, submissionStatus, approvalStatus,  comment} = summary
+         let option = submissionStatus === "Completed"? <a href="/timesheet/view" onClick={this.handleOption(summary)}> View</a> : "Incomplete" ? <a href="/timesheet" > Eidt</a> : <a href="/timesheet" > Start</a>
+         return (
+            <tr key={id}>
+               <td>{weekEnding}</td>
+               <td>{totalBillingHour}</td>
+               <td>{submissionStatus}</td>
+               <td>{approvalStatus}</td>
+               <td >{option}</td>
+               <td>{comment}</td>
+            </tr>
+         )
+      })
+   }
+
+handleOption(student){ 
+  localStorage.setItem("userId", "1");
+
+    localStorage.setItem("weekEnding", student.weekEnding);
+
+}
 
   componentDidMount() {
+ 
     let userId = localStorage.getItem("userID");
-    this.userId = "1";
-    console.log(this.userId + "-------");
-    axios
-      .get(`http://localhost:8084/timesheet/summary?userId=` + this.userId)
-      .then((res) => {
-        this.setState({ summarys: res.data });
-      });
+    this.userId = 1;
+    axios.get(`http://localhost:8084/timesheet/summary?userId=`+this.userId).then((res) => {
+      this.setState ({summarys : res.data});
+    });
+    
   }
 
   handleShowMore() {
-    this.setState({
-      count: this.state.summarys.length,
+
+    this.setState ({
+      count: this.state.summarys.length
     });
   }
 
@@ -63,28 +58,33 @@ export default class Summary extends React.Component {
     const count = this.count;
     return (
       <div>
-        <table>
-          <tr>
-            <th>WeekEnding</th>
-            <th>Total Hours</th>
-            <th>Submission Status</th>
-            <th>Approval Status</th>
-            <th>Option</th>
-            <th>Comment</th>
-          </tr>
-          <tr></tr>
-          <tbody>{this.renderTableData()}</tbody>
-        </table>
+      <table>
+        <tr>
+          <th>WeekEnding</th>
+          <th>Total Hours</th>
+          <th>Submission Status</th>
+          <th>Approval Status</th>
+          <th>Option</th>
+          <th>Comment</th>
+        </tr>
+        <tr></tr>
+        <tbody>
+          {this.renderTableData()}
+        </tbody>
+      </table>
+      
+      <button
+      type="button"
+      className="button-time"
+      button-time
+      onClick={this.handleShowMore}
+    >
+      Show More
+    </button>
+    </div>
 
-        <button
-          type="button"
-          className="button-time"
-          button-time
-          onClick={this.handleShowMore}
-        >
-          Show More
-        </button>
-      </div>
     );
   }
 }
+
+
