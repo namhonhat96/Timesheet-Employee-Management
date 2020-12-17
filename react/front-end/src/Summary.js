@@ -25,10 +25,10 @@ export default class Summary extends React.Component {
             {" "}
             View
           </a>
-        ) : "Incomplete" ? (
+        ) : "Incompleted" ? (
           <a href="/timesheet" onClick={this.handleOption(summary)}>
             {" "}
-            Eidt
+            Edit
           </a>
         ) : (
           <a href="/timesheet" onClick={this.handleOption(summary)}>
@@ -49,10 +49,11 @@ export default class Summary extends React.Component {
     });
   }
 
-  handleOption(student) {
-    localStorage.setItem("userId", "1");
-    localStorage.setItem("weekEnding", "12/26/2020"); //cannot set the student.weekEnding for some reasons
-  }
+  handleOption = (summary) => (event) => {
+    console.log(summary.weekEnding);
+    localStorage.setItem("userId", 1);
+    localStorage.setItem("weekEnding", summary.weekEnding);
+  };
 
   componentDidMount() {
     let userId = localStorage.getItem("userID");

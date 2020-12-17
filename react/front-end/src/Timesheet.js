@@ -16,7 +16,7 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = "12/26/2020";
+    let weekEnding = localStorage.getItem("weekEnding");
 
     //retrieve data from backend
     axios
@@ -36,6 +36,7 @@ export default class Timesheet extends React.Component {
           days: timesheet.days,
         });
       });
+
     let dateFormat = new Date(weekEnding);
     this.setState({
       weekFormat:
@@ -122,8 +123,6 @@ export default class Timesheet extends React.Component {
       });
   };
 
-  handleSave() {}
-
   handleDefault = (event) => {
     event.preventDefault();
 
@@ -156,6 +155,14 @@ export default class Timesheet extends React.Component {
     //Check Vacation Days left
     //if null, create a new PTO document. Otherwise update the vacation pto value for that year
   }
+
+  handleChangeStartTime = (index) => (event) => {
+    let newDays = this.state.days;
+    newDays[index].startTime = event.target.value;
+    this.setState({
+      days: newDays,
+    });
+  };
 
   render() {
     return (
@@ -219,7 +226,11 @@ export default class Timesheet extends React.Component {
                 <th>{item.day}</th>
                 <th>{item.date}</th>
                 <th>
-                  <select name="startTime" defaultValue={item.startTime}>
+                  <select
+                    name="startTime"
+                    value={item.startTime}
+                    onChange={this.handleChangeStartTime(index)}
+                  >
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
                     <option value="2:00">2:00</option>

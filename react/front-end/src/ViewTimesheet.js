@@ -16,8 +16,6 @@ export default class Timesheet extends React.Component {
   componentDidMount() {
     let uid = 1;
     let weekEnding = localStorage.getItem("weekEnding");
-
-    //retrieve data from backend
     axios
       .get(
         "http://localhost:8084/timesheet/week?userId=" +
@@ -57,6 +55,39 @@ export default class Timesheet extends React.Component {
       formatDate.getFullYear()
     );
   }
+
+  handleChange3 = (event) => {
+    //Calculate based on the total hours (working hour + floating day / vacation)
+    let changedWeek = this.convertFormatedtoNormal(event.target.value);
+    let dateFormat = new Date(changedWeek);
+    this.setState({
+      weekEnding: changedWeek,
+      weekFormat:
+        dateFormat.getFullYear() +
+        "-" +
+        (dateFormat.getMonth() + 1) +
+        "-" +
+        dateFormat.getDate(),
+    });
+    localStorage.setItem("weekEnding", changedWeek);
+    let uid = localStorage.getItem("userID");
+    axios
+      .get(
+        "http://localhost:8084/timesheet/week?userId=" +
+          uid +
+          "&weekEnding=" +
+          changedWeek
+      )
+      .then((res) => {
+        const timesheet = res.data;
+        this.setState({
+          weekEnding: timesheet.weekEnding,
+          billing: timesheet.totalBillingHour,
+          compensated: timesheet.totalCompensatedHour,
+          days: timesheet.days,
+        });
+      });
+  };
 
   render() {
     return (
