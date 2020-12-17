@@ -2,5 +2,5 @@
 microservice/.idea/workspace.xml
 microservice/.idea/workspace.xml
 *.iml
-microservice/.idea/workspace.xml
-microservice/.idea/workspace.xml
+*.xml
+react/front-end/node_modules/react-scripts/config/env.js
