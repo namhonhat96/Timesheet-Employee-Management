@@ -2,50 +2,62 @@ import React from "react";
 import axios from "axios";
 
 export default class Summary extends React.Component {
-  //Define the variable names from backend pojo
-
-  //create a table to display result
-
-  //componentdidmount
   constructor(props) {
-    super(props); //since we are extending class Table so we have to use super in order to override Component class constructor
+    super(props);
     this.state = {
-      //state is by default an object
       summarys: [],
-
-      count: 5,
     };
   }
-  //  state = { WeekEnding: "", hours: "", submissionStatus: "", approvalStatus:"", option:"", comment:"" };
+
   renderTableData() {
-    return this.state.summarys.map((student, index) => {
+    return this.state.summarys.map((summary, index) => {
       const {
         id,
         weekEnding,
         totalBillingHour,
         submissionStatus,
         approvalStatus,
-        option,
         comment,
-      } = student;
+      } = summary;
+      let option =
+        submissionStatus === "Completed" ? (
+          <a href="/view" onClick={this.handleOption(summary)}>
+            {" "}
+            View
+          </a>
+        ) : "Incompleted" ? (
+          <a href="/timesheet" onClick={this.handleOption(summary)}>
+            {" "}
+            Edit
+          </a>
+        ) : (
+          <a href="/timesheet" onClick={this.handleOption(summary)}>
+            {" "}
+            Start
+          </a>
+        );
       return (
         <tr key={id}>
           <td>{weekEnding}</td>
           <td>{totalBillingHour}</td>
           <td>{submissionStatus}</td>
           <td>{approvalStatus}</td>
-          <td onClick={this.handleOption()}>{option}</td>
+          <td>{option}</td>
           <td>{comment}</td>
         </tr>
       );
     });
   }
-  handleOption() {}
+
+  handleOption = (summary) => (event) => {
+    console.log(summary.weekEnding);
+    localStorage.setItem("userId", 1);
+    localStorage.setItem("weekEnding", summary.weekEnding);
+  };
 
   componentDidMount() {
     let userId = localStorage.getItem("userID");
-    this.userId = "1";
-    console.log(this.userId + "-------");
+    this.userId = 1;
     axios
       .get(`http://localhost:8084/timesheet/summary?userId=` + this.userId)
       .then((res) => {

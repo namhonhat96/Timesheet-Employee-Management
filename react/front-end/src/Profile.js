@@ -88,7 +88,7 @@ export default class Profile extends React.Component {
     axios
       .post(`http://localhost:8082/econtact/update`, testEContact)
       .then((res) => {});
-    // window.location = "/profile";
+    window.location = "/profile";
   };
 
   handleChange1 = (event) => {
