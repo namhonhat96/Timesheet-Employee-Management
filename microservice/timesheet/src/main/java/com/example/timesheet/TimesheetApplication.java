@@ -1,7 +1,5 @@
 package com.example.timesheet;
-
-
-import com.example.timesheet.repository.TimesheetRepository;
+import com.example.timesheet.Repository.TimesheetRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;

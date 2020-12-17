@@ -1,4 +1,4 @@
-package com.example.timesheet.repository;
+package com.example.timesheet.Repository;
 
 import com.example.timesheet.Domain.Timesheet;
 import org.springframework.data.mongodb.repository.MongoRepository;
