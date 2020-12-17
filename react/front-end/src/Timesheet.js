@@ -7,15 +7,16 @@ export default class Timesheet extends React.Component {
     // useriD: "",
     weekEnding: "",
     weekFormat: "",
-    billing: 40,
-    compensated: 0,
+    billing: "",
+    compensated: "",
     comment: "",
     days: [],
+    dateFormat: "",
   };
 
   componentDidMount() {
-    let uid = "1";
-    let weekEnding = "12/26/2020";
+    let uid = localStorage.getItem("userID");
+    let weekEnding = localStorage.getItem("weekEnding");
     //retrieve data from backend
     axios
       .get(
@@ -26,24 +27,19 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
-        console.log(
-          "user id = " + timesheet.userId + "; week: " + timesheet.weekEnding
-        );
         this.setState({
           weekEnding: timesheet.weekEnding,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
           days: timesheet.days,
         });
-        console.log("this state " + this.state.weekEnding);
       });
     let dateFormat = new Date(weekEnding);
-    console.log(dateFormat);
     this.setState({
       weekFormat:
         dateFormat.getFullYear() +
         "-" +
-        dateFormat.getMonth() +
+        (dateFormat.getMonth() + 1) +
         "-" +
         dateFormat.getDate(),
     });
@@ -57,6 +53,38 @@ export default class Timesheet extends React.Component {
   handleChange2 = (event) => {
     //Calculate based on the total hours (working hour + floating day / vacation)
     this.setState({ compensated: event.target.value });
+  };
+
+  handleChange3 = (event) => {
+    //Calculate based on the total hours (working hour + floating day / vacation)
+    let currentWeek = this.state.weekEnding;
+    let value = event.target.value;
+    if (currentWeek != value) {
+      let newDate = new Date(value);
+      this.setState({
+        weekEnding:
+          newDate.getMonth() +
+          1 +
+          "/" +
+          (newDate.getDate() + 1) +
+          "/" +
+          newDate.getFullYear(),
+      });
+
+      let dateFormat = new Date(this.state.weekEnding);
+      this.setState({
+        weekFormat:
+          dateFormat.getFullYear() +
+          "-" +
+          (dateFormat.getMonth() + 1) +
+          "-" +
+          dateFormat.getDate(),
+      });
+      console.log(this.state.weekEnding);
+      localStorage.setItem("weekEnding", this.state.weekEnding);
+      console.log(localStorage.getItem("weekEnding"));
+      //window.location = "/timesheet";
+    }
   };
 
   handleSave() {}
@@ -74,6 +102,7 @@ export default class Timesheet extends React.Component {
             name="trip-start"
             className="narrow-font set-width"
             value={this.state.weekFormat}
+            onChange={this.handleChange3}
           ></input>
 
           <label for="billing">Total Billing Hours:</label>
