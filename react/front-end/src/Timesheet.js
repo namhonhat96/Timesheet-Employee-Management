@@ -12,6 +12,7 @@ export default class Timesheet extends React.Component {
     comment: "",
     days: [],
     dateFormat: "",
+    startTime: [],
   };
 
   componentDidMount() {
@@ -36,6 +37,7 @@ export default class Timesheet extends React.Component {
           days: timesheet.days,
         });
       });
+
     let dateFormat = new Date(weekEnding);
     this.setState({
       weekFormat:
@@ -57,9 +59,7 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
-  handleCheckboxChange = (event) => {
-    this.setState({ days: event.target.value });
-  };
+
 
   handleSave = (event) => {
     event.preventDefault();
@@ -122,8 +122,6 @@ export default class Timesheet extends React.Component {
       });
   };
 
-  handleSave() {}
-
   handleDefault = (event) => {
     event.preventDefault();
 
@@ -133,30 +131,91 @@ export default class Timesheet extends React.Component {
     };
 
     axios
-      .put("http://localhost:8084/timesheet/updateTemplate", newTemplate)
+      .put("http://localhost:8084/timesheet/updateDefault", newTemplate)
       .then((res) => {});
   };
 
-  handleItem = (index, value) => {
-    let days = this.state.days;
-    days[index].startTime = value;
+  handleChangeTime = (index) => (event) => {
+    let newDays = this.state.days;
+    console.log(event.target.name);
+    let name = event.target.name;
+    var newStartTime;
+    var newEndTime;
+    if (name === 'startTime'){
+      newDays[index].startTime = event.target.value;
+      newStartTime = this.timeStringToFloat(newDays[index].startTime);
+      newEndTime =  this.timeStringToFloat(this.state.days[index].endTime);
+    }
+    else if(name ==='endTime'){
+      newDays[index].endTime = event.target.value;
+      newEndTime = this.timeStringToFloat(newDays[index].endTime);
+      newStartTime =  this.timeStringToFloat(this.state.days[index].startTime);
+    }
+    
+    console.log("start: "+newStartTime);
+    console.log(newEndTime);
+    newDays[index].totalHours = newEndTime - newStartTime;
     this.setState({
-      days: days,
+      days: newDays,
     });
   };
 
-  chooseFloatingDay(choseDate) {
-    //check Floating Days left
-    //URL: "localhost:8084/timesheet/pto"
-    //if null, create a new PTO document. Otherwise update the pto value for that year
-    //update the pto left
+  handleCheckboxChange = (index) => (event) => {
+    let newDays = this.state.days;
+    let name = event.target.name;
+    var newTot;
+    console.log(event.target.name);
+    if(name === 'vacation'){
+      newDays[index].vacation= this.state.days[index].vacation ? false:true;
+      if(newDays[index].vacation) {
+        newDays[index].totalHours = 0.0;
+      }
+      else{
+        newDays[index].totalHours = this.calculateDailyWorkTime(index);
+      }
+      console.log(newDays[index].vacation);
+    }
+    if(name === 'floating'){
+      newDays[index].floating = this.state.days[index].floating ? false:true;
+      if(newDays[index].floating) {
+        newDays[index].totalHours = 0.0;
+      }
+      else{
+        newDays[index].totalHours = this.calculateDailyWorkTime(index);
+      }
+      console.log(newDays[index].floating);
+    }
+    let newBilling =  this.calculateTotalBilling(newDays);
+    this.setState({
+      billing: newBilling,
+      days: newDays,
+    });
+  };
+
+  // Helper function
+  timeStringToFloat(time) {
+    var hoursMinutes = time.split(/[:]/);
+    var hours = parseInt(hoursMinutes[0], 10);
+    var minutes = hoursMinutes[1]?parseInt(hoursMinutes[1], 10) : 0;
+    return hours+minutes/60;
   }
 
-  chooseVacationDay(chosenDate) {
-    //Check Vacation Days left
-    //if null, create a new PTO document. Otherwise update the vacation pto value for that year
+  calculateDailyWorkTime(index){
+    let start = this.state.days[index].startTime;
+    let end = this.state.days[index].endTime;
+    if (start ==='N/A' || end ==='N/A'){
+      return 0.0;
+    }
+    return this.timeStringToFloat(end) - this.timeStringToFloat(start);
   }
-
+  calculateTotalBilling (days){
+    let billingHours = 0;
+    for(let i=0;i<days.length;i++){
+      billingHours += days[i].totalHours;
+    }
+    console.log("sum is: "+ billingHours);
+    return billingHours;
+  }
   render() {
     return (
       <div>
@@ -216,8 +275,14 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
+                <th>{item.day}</th>
+                <th>{item.date}</th>
                 <th>
-                  <select name="startTime" defaultValue={item.startTime}>
+                  <select
+                    name="startTime"
+                    value={item.startTime}
+                    onChange={this.handleChangeTime(index)}
+                  >
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
                     <option value="2:00">2:00</option>
@@ -246,7 +311,9 @@ export default class Timesheet extends React.Component {
                   </select>
                 </th>
                 <th>
-                  <select name="endTime" defaultValue={item.endTime}>
+                  <select name="endTime" 
+                  defaultValue={item.endTime}
+                  onChange={this.handleChangeTime(index)}>
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
                     <option value="2:00">2:00</option>
@@ -275,62 +342,39 @@ export default class Timesheet extends React.Component {
                   </select>
                 </th>
 
+                <th>{item.totalHours}</th>
                 <th>
-                  <select name="totalHours" defaultValue={item.totalHours}>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                  </select>
-                </th>
-                <th>
-                  {item.floating ? (
-                    "x"
-                  ) : item.holiday ? (
-                    " "
-                  ) : (
-                    <button
-                      onClick={() => this.chooseFloatingDay(item.floating)}
-                    >
-                      Select
-                    </button>
-                  )}
-                </th>
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.vacation ?
+                      " "
+                      : <input 
+                      name = "floating"
+                      type = "checkbox"
+                      checked = {item.floating}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }                    
+                 </th>
                 <th>{item.holiday ? "x" : ""}</th>
+
                 <th>
-                  {" "}
-                  {item.vacation ? (
-                    "x"
-                  ) : item.holiday ? (
-                    " "
-                  ) : (
-                    <button
-                      onClick={() => this.chooseFloatingDay(item.vacation)}
-                    >
-                      Select
-                    </button>
-                  )}
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.floating ?
+                      " "
+                      : <input 
+                      name = "vacation"
+                      type = "checkbox"
+                      checked = {item.vacation}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }   
+
                 </th>
               </tr>
             ))}
@@ -359,6 +403,7 @@ export default class Timesheet extends React.Component {
           </button>
         </div>
       </div>
+
     );
   }
 }

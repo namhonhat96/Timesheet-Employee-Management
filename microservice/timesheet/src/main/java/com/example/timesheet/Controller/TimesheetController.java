@@ -64,7 +64,14 @@ public class TimesheetController {
 
     @PutMapping("/updateTimesheet")
     public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
-        timesheetRepo.save(timesheet);
+        Timesheet original = timesheetRepo.findByUserIdAndWeekEnding(timesheet.getUserId(),timesheet.getWeekEnding());
+        original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
+        original.setTotalBillingHour(timesheet.getTotalBillingHour());
+        original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
+        original.setSubmissionStatus(timesheet.getSubmissionStatus());
+        original.setApprovalStatus(timesheet.getApprovalStatus());
+        original.setDays(timesheet.getDays());
+        timesheetRepo.save(original);
         return ResponseEntity.ok("Update timesheet");
     }
 
