@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class TimesheetDBConfig {
     CommandLineRunner commandLineRunner(TimesheetRepository timesheetRepository) {
         return strings -> {
             List<Day> days = initializeDayList1(1,"12/26/2020");
-
             //Initialize timesheet summary for user 1
             timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, 0, 0, "", days));
         };
@@ -42,7 +40,6 @@ public class TimesheetDBConfig {
     public List<Day> initializeDayList1(Integer userId, String weekEnding) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date weekEndingDate = sdf.parse(weekEnding);
-
         Calendar ComparedDate = Calendar.getInstance();
         Holidays holidays = holidaysRepository.findByYear(2020);
         if(holidays == null) {
@@ -65,8 +62,6 @@ public class TimesheetDBConfig {
                 else {
                     dayList1.get(i).setHoliday(false);
                 }
-
-
                 dayList1.get(i).setDay("Sunday");
             }
             else if(i==1) {
@@ -89,12 +84,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -4);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Tuesday");
             }
             else if(i==3) {
@@ -103,12 +92,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -3);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Wednesday");
             }
             else if(i==4) {
@@ -117,12 +100,6 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -2);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Thursday");
             }
             else if(i==5) {
@@ -142,18 +119,10 @@ public class TimesheetDBConfig {
             else{
                 Calendar date = ComparedDate;
                 date.setTime(weekEndingDate);
-
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
-//                if(holidaysDates.contains(curDate)) {
-//                    dayList1.get(i).setHoliday(true);
-//                }
-//                else {
-//                    dayList1.get(i).setHoliday(false);
-//                }
                 dayList1.get(i).setDay("Saturday");
             }
-
         }
         return dayList1;
     }
