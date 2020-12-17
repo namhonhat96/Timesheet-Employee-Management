@@ -34,21 +34,14 @@ export default class Summary extends React.Component {
       })
    }
 
-handleOption(){
-  //if completed, jump to viewtimesheet page
-  //set the wekendEnding to localStorage.
-  //window.location = "/timesheet/view";
-
-  //if incompleted not started, jump to timehsheet page
-    //set the wekendEnding to localStorage.
-  //window.location = "/timesheet;
- }
+handleOption(){ }
 
   componentDidMount() {
  
-    this.state.userId = localStorage.getItem("userID");
+    let userId = localStorage.getItem("userID");
+    this.userId = "1";
     console.log(this.userId+"-------")
-    axios.get(`http://localhost:8084/timesheet/summary?userId=`+this.state.userId).then((res) => {
+    axios.get(`http://localhost:8084/timesheet/summary?userId=`+this.userId).then((res) => {
       this.setState ({summarys : res.data});
     });
     

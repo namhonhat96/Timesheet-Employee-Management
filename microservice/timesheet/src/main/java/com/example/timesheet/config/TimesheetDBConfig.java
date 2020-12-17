@@ -40,7 +40,7 @@ public class TimesheetDBConfig {
             List<Day> days = initializeDayList1(1,"12/26/2020");
 
             //Initialize timesheet summary for user 1
-            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, 0, 0, "", days));
+            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Incompleted", "Not approved", "", days));
         };
     }
 

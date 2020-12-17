@@ -13,8 +13,8 @@ export default class Timesheet extends React.Component {
   };
 
   componentDidMount() {
-    let uid = 1;
-    let weekEnding = "12/26/2020"; //localstorage.getitem("we'e'ken'ding")
+    let uid = "1";
+    let weekEnding = "12/26/2020";
     //retrieve data from backend
     axios.get('http://localhost:8084/timesheet/week?userId='+uid+"&weekEnding="+weekEnding)
           .then(
