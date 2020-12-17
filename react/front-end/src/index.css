@@ -22,3 +22,12 @@ li a:hover {
   color: blue;
   background-color: white;
 }
+
+.logout_button {
+  float: left;
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  border-color: white;
+  padding: 15px 50px;
+}

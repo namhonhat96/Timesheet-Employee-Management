@@ -63,10 +63,10 @@ export default class Summary extends React.Component {
       });
   }
 
-  handleOption = (student) => {
-    localStorage.setItem("userId", "1");
-
-    localStorage.setItem("weekEnding", student.weekEnding);
+  handleOption = (summary) => (event) => {
+    console.log(summary.weekEnding);
+    localStorage.setItem("userId", 1);
+    localStorage.setItem("weekEnding", summary.weekEnding);
   };
 
   componentDidMount() {
