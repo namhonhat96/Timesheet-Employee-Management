@@ -32,8 +32,12 @@ public class TimesheetDBConfig {
     CommandLineRunner commandLineRunner(TimesheetRepository timesheetRepository) {
         return strings -> {
             List<Day> days = initializeDayList1(1,"12/26/2020");
+            List<Day> days2 = initializeDayList1(1,"12/19/2020");
+            List<Day> days3 = initializeDayList1(1,"12/12/2020");
             //Initialize timesheet summary for user 1
-            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Incompleted", "Not approved", "", days));
+            timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Not Started", "Not approved", "", days));
+            timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incompleted", "Not approved", "", days2));
+            timesheetRepository.save(new Timesheet(3, 1, "12/12/2020", 40, 40, "Completed", "Approved", "", days3));
         };
     }
 
@@ -125,96 +129,6 @@ public class TimesheetDBConfig {
             }
         }
         return dayList1;
-    }
-
-    public List<Day> initializeDayList2(Integer userId, String weekEnding)throws ParseException{
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        Date weekEndingDate = sdf.parse(weekEnding);
-        Calendar ComparedDate = Calendar.getInstance();
-        Holidays holidays = holidaysRepository.findByYear(2020);
-        if(holidays == null) {
-            System.out.println("null");
-        }
-        List<String> holidaysDates = holidays.getHoliday();
-        List<Day> dayList2 = templateRepository.findByUserId(userId).getDays();
-        for(int i=0; i<dayList2.size(); i++) {
-            if(i==0) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -6);
-
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-
-                if(holidaysDates.contains(curDate)) {
-                    dayList2.get(i).setHoliday(true);
-                }
-                else {
-                    dayList2.get(i).setHoliday(false);
-                }
-                dayList2.get(i).setDay("Sunday");
-            }
-            else if(i==1) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -5);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                if(holidaysDates.contains(curDate)) {
-                    dayList2.get(i).setHoliday(true);
-                }
-                else {
-                    dayList2.get(i).setHoliday(false);
-                }
-                dayList2.get(i).setDay("Monday");
-            }
-            else if(i==2) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -4);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                dayList2.get(i).setDay("Tuesday");
-            }
-            else if(i==3) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -3);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                dayList2.get(i).setDay("Wednesday");
-            }
-            else if(i==4) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -2);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                dayList2.get(i).setDay("Thursday");
-            }
-            else if(i==5) {
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                date.add(Calendar.DAY_OF_YEAR, -1);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                if(holidaysDates.contains(curDate)) {
-                    dayList2.get(i).setHoliday(true);
-                }
-                else {
-                    dayList2.get(i).setHoliday(false);
-                }
-                dayList2.get(i).setDay("Friday");
-            }
-            else{
-                Calendar date = ComparedDate;
-                date.setTime(weekEndingDate);
-                String curDate = sdf.format(date.getTime());
-                dayList2.get(i).setDate(curDate);
-                dayList2.get(i).setDay("Saturday");
-            }
-        }
-        return dayList2;
     }
 }
 
