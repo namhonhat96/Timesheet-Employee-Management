@@ -16,6 +16,7 @@ public class EContactDBConfig {
     @Bean("econtact")
     CommandLineRunner commandLineRunner(EContactRepository eContactRepository) {
         return strings -> {
+            eContactRepository.deleteAll();
             eContactRepository.save(new EContact(1,1, "John Doe", "111-222-3456", "Emily Franklin", "222-333-4567"));
             eContactRepository.save(new EContact(2,2, "Timothy Adams", "612-222-3456", "Kathy Muth", "213-333-4567"));
         };
