@@ -103,6 +103,18 @@ export default class Timesheet extends React.Component {
 
   handleDefault() {}
 
+  chooseFloatingDay(choseDate) {
+    //check Floating Days left
+    //URL: "localhost:8084/timesheet/pto"
+    //if null, create a new PTO document. Otherwise update the pto value for that year
+    //update the pto left
+  }
+
+  chooseVacationDay(chosenDate) {
+    //Check Vacation Days left
+    //if null, create a new PTO document. Otherwise update the vacation pto value for that year
+  }
+
   render() {
     return (
       <div>
@@ -162,14 +174,39 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
-                <th>{item.day}</th>
-                <th>{item.date}</th>
-                <th>{item.startTime}</th>
-                <th>{item.endTime}</th>
-                <th>{item.totalHours}</th>
-                <th>{item.floating ? "x" : ""}</th>
-                <th>{item.holiday ? "x" : ""}</th>
-                <th>{item.vacation ? "x" : ""}</th>
+                <td>{item.day}</td>
+                <td>{item.date}</td>
+                <td>{item.startTime}</td>
+                <td>{item.endTime}</td>
+                <td>{item.totalHours}</td>
+                <td>
+                  {item.floating ? (
+                    "x"
+                  ) : item.holiday ? (
+                    " "
+                  ) : (
+                    <button
+                      onClick={() => this.chooseFloatingDay(item.floating)}
+                    >
+                      Select
+                    </button>
+                  )}
+                </td>
+                <td>{item.holiday ? "x" : ""}</td>
+                <td>
+                  {" "}
+                  {item.vacation ? (
+                    "x"
+                  ) : item.holiday ? (
+                    " "
+                  ) : (
+                    <button
+                      onClick={() => this.chooseFloatingDay(item.vacation)}
+                    >
+                      Select
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </table>
