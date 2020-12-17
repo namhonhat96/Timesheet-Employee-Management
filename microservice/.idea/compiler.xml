@@ -7,13 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="summary" />
-        <module name="timesheet" />
+        <module name="gateway" />
         <module name="config-server" />
         <module name="micro-discovery" />
-        <module name="contact" />
         <module name="auth-server" />
-        <module name="gateway" />
+        <module name="contact" />
+        <module name="timesheet" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
