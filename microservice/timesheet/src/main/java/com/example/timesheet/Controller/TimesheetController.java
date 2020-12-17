@@ -1,18 +1,20 @@
 package com.example.timesheet.Controller;
 
 import com.example.timesheet.Domain.Holidays;
+import com.example.timesheet.Domain.PTO;
 import com.example.timesheet.Domain.Template;
 import com.example.timesheet.Domain.Timesheet;
 
-import com.example.timesheet.repository.HolidaysRepository;
+import com.example.timesheet.Repository.HolidaysRepository;
+import com.example.timesheet.Repository.PTORepository;
 import com.example.timesheet.repository.TimesheetRepository;
 import com.example.timesheet.repository.TemplateRepository;
-import org.bouncycastle.util.Times;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,7 +25,10 @@ public class TimesheetController {
     private TimesheetRepository timesheetRepo;
 
     @Autowired
-    HolidaysRepository holidaysRepository;
+    private HolidaysRepository holidaysRepository;
+
+    @Autowired
+    private PTORepository ptoRepository;
 
     @Autowired
     private TemplateRepository templateRepository;
@@ -59,14 +64,7 @@ public class TimesheetController {
 
     @PutMapping("/updateTimesheet")
     public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
-        Timesheet original = timesheetRepo.findByUserIdAndWeekEnding(timesheet.getUserId(),timesheet.getWeekEnding());
-        original.setDays(timesheet.getDays());
-        original.setComment(timesheet.getComment());
-        original.setApprovalStatus(timesheet.getApprovalStatus());
-        original.setSubmissionStatus(timesheet.getSubmissionStatus());
-        original.setTotalBillingHour(timesheet.getTotalBillingHour());
-        original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
-        timesheetRepo.save(original);
+        timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Update timesheet");
     }
 
@@ -85,5 +83,62 @@ public class TimesheetController {
             System.out.println("null");
         }
         return holidays;
+    }
+
+    @GetMapping("/pto")
+    public PTO findByUserIdAndYear(@RequestBody PTO pto){
+        PTO checkPto = ptoRepository.findByUserIdAndYear(pto.getId(), pto.getYear());
+        if(checkPto == null){
+            System.out.println("No PTO found");
+        }
+        return checkPto;
+    }
+
+    @PostMapping("/update-floating")
+    public void updateFloating(@RequestBody PTO pto){
+        PTO checkPTO = ptoRepository.findByUserIdAndYear(pto.getUserId(), pto.getYear());
+        if(checkPTO != null){
+            if(checkPTO.getFloatingCount() > 0){
+                checkPTO.setFloatingCount(checkPTO.getFloatingCount()-1);
+                ptoRepository.delete(pto); //remove the old document
+                ptoRepository.save(checkPTO); //save the new document
+                //Update the floating day left on Summary comment
+            }else{
+                System.out.println("No more floating day");
+            }
+        }else{
+            System.out.println("No PTO Floating day found");
+            //Create a new PTO floating day document for that year
+            Random random = new Random();
+            int id = random.nextInt(100);
+            pto.setId(id);
+            pto.setUserId(pto.getUserId());
+            pto.setFloatingCount(2); //use one floating day
+            pto.setVacationCount(3);
+        }
+    }
+
+    @PostMapping("/update-vacation")
+    public void updateVacation(@RequestBody PTO pto){
+        PTO checkVacation = ptoRepository.findByUserIdAndYear(pto.getUserId(), pto.getYear());
+        if(checkVacation != null){
+            if(checkVacation.getVacationCount() > 0){
+                checkVacation.setVacationCount(checkVacation.getVacationCount()- 1);
+                ptoRepository.delete(pto);
+                ptoRepository.save(checkVacation);
+            }else{
+                System.out.println("No more vacation day left");
+            }
+        }else{
+            System.out.println("No PTO vacation found");
+            Random random = new Random();
+            int id = random.nextInt(100);
+            pto.setId(id);
+            pto.setUserId(pto.getUserId());
+            pto.setFloatingCount(3);
+            pto.setVacationCount(2);//use one vacation day
+        }
+        pto.setFloatingCount(pto.getFloatingCount()-1);
+        ptoRepository.save(pto);
     }
 }

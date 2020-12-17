@@ -4,7 +4,7 @@ import "./Timesheet.css";
 
 export default class Timesheet extends React.Component {
   state = {
-    // useriD: "",
+    userId: "",
     weekEnding: "",
     weekFormat: "",
     billing: "",
@@ -16,8 +16,8 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = localStorage.getItem("weekEnding");
-    // let weekEnding = "12/26/2020";
+    let weekEnding = "12/26/2020";
+
     //retrieve data from backend
     axios
       .get(
@@ -29,6 +29,7 @@ export default class Timesheet extends React.Component {
       .then((res) => {
         const timesheet = res.data;
         this.setState({
+          userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
@@ -56,7 +57,6 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
-
   handleCheckboxChange = (event) => {
     this.setState({ days: event.target.value });
   };
@@ -78,7 +78,6 @@ export default class Timesheet extends React.Component {
 
     // window.location = "/timesheet"
   };
-
   convertFormatedtoNormal(inputDay) {
     let formatDate = new Date(inputDay);
     return (
@@ -123,6 +122,8 @@ export default class Timesheet extends React.Component {
       });
   };
 
+  handleSave() {}
+
   handleDefault = (event) => {
     event.preventDefault();
 
@@ -143,6 +144,18 @@ export default class Timesheet extends React.Component {
       days: days,
     });
   };
+
+  chooseFloatingDay(choseDate) {
+    //check Floating Days left
+    //URL: "localhost:8084/timesheet/pto"
+    //if null, create a new PTO document. Otherwise update the pto value for that year
+    //update the pto left
+  }
+
+  chooseVacationDay(chosenDate) {
+    //Check Vacation Days left
+    //if null, create a new PTO document. Otherwise update the vacation pto value for that year
+  }
 
   render() {
     return (
@@ -203,12 +216,6 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
-                <th>{item.day}</th>
-                <th>{item.date}</th>
-                {/* <th>{item.startTime}</th>
-                <th>{item.endTime}</th>
-                <th>{item.totalHours}</th> */}
-                {/* <th>{item.startTime}</th> */}
                 <th>
                   <select name="startTime" defaultValue={item.startTime}>
                     <option value="N/A">N/A</option>
@@ -297,11 +304,34 @@ export default class Timesheet extends React.Component {
                     <option value="24">24</option>
                   </select>
                 </th>
-                {/* <th>{item.endTime}</th> */}
-                {/* <th>{item.totalHours}</th> */}
-                <th>{item.floating ? "x" : ""}</th>
+                <th>
+                  {item.floating ? (
+                    "x"
+                  ) : item.holiday ? (
+                    " "
+                  ) : (
+                    <button
+                      onClick={() => this.chooseFloatingDay(item.floating)}
+                    >
+                      Select
+                    </button>
+                  )}
+                </th>
                 <th>{item.holiday ? "x" : ""}</th>
-                <th>{item.vacation ? "x" : ""}</th>
+                <th>
+                  {" "}
+                  {item.vacation ? (
+                    "x"
+                  ) : item.holiday ? (
+                    " "
+                  ) : (
+                    <button
+                      onClick={() => this.chooseFloatingDay(item.vacation)}
+                    >
+                      Select
+                    </button>
+                  )}
+                </th>
               </tr>
             ))}
           </table>

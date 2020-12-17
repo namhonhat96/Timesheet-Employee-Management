@@ -20,7 +20,6 @@ export default class Profile extends React.Component {
     let userId = localStorage.getItem("userID");
     axios.get(`http://localhost:8082/contact/` + userId).then((res) => {
       const testExample = res.data;
-      console.log(testExample.eContactId);
       this.setState({
         contactID: testExample.id,
         phoneNumber: testExample.phoneNumber,
@@ -29,7 +28,10 @@ export default class Profile extends React.Component {
         eContactId: testExample.eContactId,
       });
     });
-
+    localStorage.setItem("addressId", this.state.addressId);
+    localStorage.setItem("eContactId", this.state.addressId);
+    console.log("iniail addressId: " + localStorage.getItem("addressId"));
+    console.log("iniail eContactId: " + localStorage.getItem("eContactId"));
     axios.get(`http://localhost:8082/address/` + userId).then((res) => {
       const testExample2 = res.data;
       this.setState({
@@ -55,16 +57,20 @@ export default class Profile extends React.Component {
       id: this.state.contactID,
       phoneNumber: this.state.phoneNumber,
       email: this.state.email,
+      addressId: localStorage.getItem("addressId"),
+      eContactId: localStorage.getItem("eContactId"),
     };
+    console.log(testContact);
+    console.log(this.state.addressId);
+    console.log(this.state.eContactId);
 
-    console.log("eContactID: " + this.state.eContactId);
     const testAddress = {
       id: this.state.addressId,
       homeAddress: this.state.homeAddress,
     };
 
     const testEContact = {
-      id: this.state.eContactId,
+      personID: this.state.eContactId,
       eContactName1: this.state.eContactName1,
       eContactPhone1: this.state.eContactPhone1,
       eContactName2: this.state.eContactName2,
@@ -110,6 +116,7 @@ export default class Profile extends React.Component {
   handleChange7 = (event) => {
     this.setState({ eContactPhone2: event.target.value });
   };
+
   render() {
     return (
       <div>

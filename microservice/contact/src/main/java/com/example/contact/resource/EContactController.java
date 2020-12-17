@@ -22,7 +22,7 @@ public class EContactController {
 
     @PostMapping("update")
     public void updateTestByID(@RequestBody EContact eContact){
-        EContact validateEContact = this.eContactRepository.findEContactByName1(eContact.getName1());
+        EContact validateEContact = this.eContactRepository.findEContactByPersonID(eContact.getPersonID());
         System.out.println("EContact ID:" + eContact.getId());
         if(validateEContact != null){
             this.eContactRepository.delete(validateEContact);
