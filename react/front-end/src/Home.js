@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReacDom from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Summary from "./Summary";
 import TimeSheet from "./Timesheet";
