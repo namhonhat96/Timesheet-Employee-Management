@@ -4,26 +4,32 @@ import "./Timesheet.css";
 
 export default class Timesheet extends React.Component {
   state = {
-    dateStart: "",
-    dateEnd: "",
-    billing: "",
-    compensated: "",
-    daysOfWeek: [],
-    dates: [],
+    // useriD: "",
+    weekEnding: "",
+    billing: 40,
+    compensated: 0,
+    comment: "",
+    days: [],
   };
 
   componentDidMount() {
+    let uid = "1";
+    let weekEnding = "2020/12/19";
     //retrieve data from backend
-    this.setState({
-      dateStart: "2020-12-20",
-      dateEnd: "2020-12-26",
-      billing: "32",
-      compensated: "40",
-      daysOfWeek: [
-        "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday",
-      ],
-      //List of days of the week for the table
-    });
+    axios.get('http://localhost:8084/timesheet/week?userId='+uid+"&weekEnding="+weekEnding)
+          .then(
+            res=>{
+              const timesheet = res.data;
+              console.log("user id = "+timesheet.userId+"; week: "+ timesheet.weekEnding);
+              this.setState({
+                weekEnding: timesheet.weekEnding,
+                billing: timesheet.totalBillingHour,
+                compensated: timesheet.totalCompensatedHour,
+                days: timesheet.days,
+              });
+              console.log("this state " + this.state.weekEnding);
+            }
+          )
   }
 
   handleChange1 = (event) => {
@@ -50,7 +56,7 @@ export default class Timesheet extends React.Component {
             id="start"
             name="trip-start"
             className="narrow-font set-width"
-            value={this.state.dateEnd}
+            value={this.state.weekEnding}
           ></input>
 
           <label for="billing">Total Billing Hours:</label>
@@ -96,9 +102,21 @@ export default class Timesheet extends React.Component {
               <th>Holiday</th>
               <th>Vacation</th>
             </tr>
-            <tr></tr>
+            {this.state.days.map((item,index) =>(
+              <tr key={index}>
+                <th>{item.day}</th>
+                <th>{item.date}</th>
+                <th>{item.startTime}</th>
+                <th>{item.endTime}</th> 
+                <th>{item.totalHours}</th>
+                <th>{item.floating ? 'x' : ''}</th>
+                <th>{item.holiday ? 'x' : ''}</th>
+                <th>{item.vacation ? 'x' : ''}</th>
+              </tr>
+            ))}
           </table>
         </div>
+        
         <div>
           <select id="timesheet-select">
             <option value="">--Please choose an option--</option>
