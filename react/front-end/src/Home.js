@@ -32,7 +32,7 @@ export default function Home() {
           <Route path="/timesheet">
             <TimeSheet />
           </Route>
-          <Route exact path="/timesheet/view">
+          <Route path="/timesheet/view">
             <ViewTimesheet />
           </Route>
           <Route path="/profile">
