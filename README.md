@@ -1,4 +1,4 @@
-# Timesheet Employee Management 
+# Timesheet Employee Management Project
 
 # Objective:
 The project aims to create a Timesheet Application. It displays the list of timesheets and employee person information and contact. 
