@@ -153,6 +153,7 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
+
         this.setState({
           weekEnding: timesheet.weekEnding,
           billing: timesheet.totalBillingHour,
@@ -249,7 +250,7 @@ export default class Timesheet extends React.Component {
       else{
         floatNum += 1;
         newDays[index].startTime = "9:00";
-        newDays[index].endTime = "18:00";
+        newDays[index].endTime = "17:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
         console.log("compensated" + this.state.compensated);
 
