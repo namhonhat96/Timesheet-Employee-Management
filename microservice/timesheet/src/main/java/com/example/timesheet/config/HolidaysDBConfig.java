@@ -1,7 +1,7 @@
 package com.example.timesheet.config;
 
 import com.example.timesheet.Domain.Holidays;
-import com.example.timesheet.Repository.HolidaysRepository;
+import com.example.timesheet.repository.HolidaysRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

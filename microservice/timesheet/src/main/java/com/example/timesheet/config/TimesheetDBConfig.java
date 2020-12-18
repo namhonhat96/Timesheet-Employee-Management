@@ -3,9 +3,9 @@ import com.example.timesheet.Domain.Day;
 import com.example.timesheet.Domain.Holidays;
 import com.example.timesheet.Domain.Timesheet;
 
-import com.example.timesheet.Repository.HolidaysRepository;
+import com.example.timesheet.repository.HolidaysRepository;
 import com.example.timesheet.repository.TemplateRepository;
-import com.example.timesheet.Repository.TimesheetRepository;
+import com.example.timesheet.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -54,6 +54,7 @@ public class TimesheetDBConfig {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date weekEndingDate = sdf.parse(weekEnding);
         Calendar ComparedDate = Calendar.getInstance();
+        System.out.println("compareDate: "+ ComparedDate);
         Holidays holidays = holidaysRepository.findByYear(year);
         if(holidays == null) {
             System.out.println("null");
@@ -71,6 +72,9 @@ public class TimesheetDBConfig {
 
                 if(holidaysDates.contains(curDate)) {
                     dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
                 }
                 else {
                     dayList1.get(i).setHoliday(false);
@@ -85,6 +89,9 @@ public class TimesheetDBConfig {
                 dayList1.get(i).setDate(curDate);
                 if(holidaysDates.contains(curDate)) {
                     dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
                 }
                 else {
                     dayList1.get(i).setHoliday(false);
@@ -97,6 +104,15 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -4);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
+                }
+                else {
+                    dayList1.get(i).setHoliday(false);
+                }
                 dayList1.get(i).setDay("Tuesday");
             }
             else if(i==3) {
@@ -105,6 +121,15 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -3);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
+                }
+                else {
+                    dayList1.get(i).setHoliday(false);
+                }
                 dayList1.get(i).setDay("Wednesday");
             }
             else if(i==4) {
@@ -113,6 +138,15 @@ public class TimesheetDBConfig {
                 date.add(Calendar.DAY_OF_YEAR, -2);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
+                }
+                else {
+                    dayList1.get(i).setHoliday(false);
+                }
                 dayList1.get(i).setDay("Thursday");
             }
             else if(i==5) {
@@ -123,6 +157,9 @@ public class TimesheetDBConfig {
                 dayList1.get(i).setDate(curDate);
                 if(holidaysDates.contains(curDate)) {
                     dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
                 }
                 else {
                     dayList1.get(i).setHoliday(false);
@@ -132,8 +169,18 @@ public class TimesheetDBConfig {
             else{
                 Calendar date = ComparedDate;
                 date.setTime(weekEndingDate);
+                date.add(Calendar.DAY_OF_YEAR, 0);
                 String curDate = sdf.format(date.getTime());
                 dayList1.get(i).setDate(curDate);
+                if(holidaysDates.contains(curDate)) {
+                    dayList1.get(i).setHoliday(true);
+                    dayList1.get(i).setTotalHours(0.00);
+                    dayList1.get(i).setStartTime("N/A");
+                    dayList1.get(i).setEndTime("N/A");
+                }
+                else {
+                    dayList1.get(i).setHoliday(false);
+                }
                 dayList1.get(i).setDay("Saturday");
             }
         }

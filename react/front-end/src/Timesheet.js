@@ -7,18 +7,43 @@ export default class Timesheet extends React.Component {
     userId: "",
     weekEnding: "",
     weekFormat: "",
+    submissionStatus: "",
+    approvalStatus: "",
     billing: "",
     compensated: "",
     comment: "",
     days: [],
+
     dateFormat: "",
     startTime: [],
+    floatingCount: 0,
+    vacationCount: 0,
+    year: 0,
+    // weekFloat: 0,
+    // weekVacation:0,
   };
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
     let weekEnding = localStorage.getItem("weekEnding");
-
+    console.log("weekEnding" + weekEnding);
+    let yr = weekEnding.split(/[/]/)[2];
+    // retrieve pto data from backend 
+    axios
+    .get('http://localhost:8084/timesheet/pto?userId=' +
+          uid +
+          "&year=" +
+          yr)
+    .then((res)=>{
+          const pto = res.data;
+          console.log("pto: ");
+          console.log(pto);
+          this.setState({
+            year: pto.year,
+            floatingCount: pto.floatingCount,
+            vacationCount: pto.vacationCount,
+          })
+    })
     //retrieve data from backend
     axios
       .get(
@@ -29,9 +54,12 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
+        console.log(res.data);
         this.setState({
           userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
+          submissionStatus: timesheet.submissionStatus,
+          approvalStatus: timesheet.approvalStatus,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
           days: timesheet.days,
@@ -59,21 +87,34 @@ export default class Timesheet extends React.Component {
     this.setState({ compensated: event.target.value });
   };
 
+
+
   handleSave = (event) => {
     event.preventDefault();
 
     const newTimesheet = {
       userId: this.state.userId,
       weekEnding: this.state.weekEnding,
+      submissionStatus: this.state.submissionStatus,
+      approvalStatus: this.state.approvalStatus,
       totalBillingHour: this.state.billing,
       totalCompensatedHour: this.state.compensated,
       comment: this.state.comment,
       days: this.state.days,
     };
+    const newPTO ={
+      userId: this.state.userId,
+      year: this.state.year,
+      floatingCount: this.state.floatingCount,
+      vacationCount: this.state.vacationCount,
+    }
     axios
       .put("http://localhost:8084/timesheet/updateTimesheet", newTimesheet)
       .then((res) => {});
-
+    axios
+    .put("http://localhost:8084/timesheet/update-pto", newPTO)
+    .then((res) => {});
+    window.location = "/summary";
     // window.location = "/timesheet"
   };
   convertFormatedtoNormal(inputDay) {
@@ -86,6 +127,7 @@ export default class Timesheet extends React.Component {
       "/" +
       formatDate.getFullYear()
     );
+    
   }
   handleChange3 = (event) => {
     //Calculate based on the total hours (working hour + floating day / vacation)
@@ -139,51 +181,112 @@ export default class Timesheet extends React.Component {
     let name = event.target.name;
     var newStartTime;
     var newEndTime;
-    if (name === "startTime") {
+    if (name === 'startTime'){
       newDays[index].startTime = event.target.value;
       newStartTime = this.timeStringToFloat(newDays[index].startTime);
-      newEndTime = this.timeStringToFloat(this.state.days[index].endTime);
-    } else if (name === "endTime") {
+      newEndTime =  this.timeStringToFloat(this.state.days[index].endTime);
+    }
+    else if(name ==='endTime'){
       newDays[index].endTime = event.target.value;
       newEndTime = this.timeStringToFloat(newDays[index].endTime);
-      newStartTime = this.timeStringToFloat(this.state.days[index].startTime);
+      newStartTime =  this.timeStringToFloat(this.state.days[index].startTime);
     }
-
-    console.log("start: " + newStartTime);
+    
+    console.log("start: "+newStartTime);
     console.log(newEndTime);
     newDays[index].totalHours = newEndTime - newStartTime;
+    let newBilling =  this.calculateTotalBilling(newDays);  
+    let diff = newBilling - this.state.billing;
+    let newCompensated = this.state.compensated + diff;
+
     this.setState({
       days: newDays,
+      billing: newBilling,
+      compensated: newCompensated
+
     });
   };
+
 
   handleCheckboxChange = (index) => (event) => {
     let newDays = this.state.days;
     let name = event.target.name;
-    var newTot;
+    let floatNum = this.state.floatingCount;
+    let vacationNum = this.state.vacationCount;
+    let requireF = 0;
+    let requireV = 0;
+
     console.log(event.target.name);
-    if (name === "vacation") {
-      newDays[index].vacation = this.state.days[index].vacation ? false : true;
-      if (newDays[index].vacation) {
+    var newCompensated = this.state.compensated;
+    if(name === 'vacation'){
+      newDays[index].vacation= this.state.days[index].vacation ? false:true;
+      if(newDays[index].vacation) {
+        vacationNum -= 1;
+        let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
-      } else {
+        newDays[index].startTime = "N/A";
+        newDays[index].endTime = "N/A";    
+        newCompensated += 8 - originalTotalHour;
+      }
+      else{
+        vacationNum += 1;
+        newDays[index].startTime = "9:00";
+        newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
       }
-      console.log(newDays[index].vacation);
+
     }
-    if (name === "floating") {
-      newDays[index].floating = this.state.days[index].floating ? false : true;
-      if (newDays[index].floating) {
+    if(name === 'floating'){
+      newDays[index].floating = this.state.days[index].floating ? false:true;
+      if(newDays[index].floating) {
+        floatNum -= 1;
+        let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
-      } else {
+        newDays[index].startTime = "N/A";
+        newDays[index].endTime = "N/A";
+        newCompensated += 8 - originalTotalHour;
+      }
+      else{
+        floatNum += 1;
+        newDays[index].startTime = "9:00";
+        newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
+        console.log("compensated" + this.state.compensated);
+
       }
       console.log(newDays[index].floating);
     }
-    let newBilling = this.calculateTotalBilling(newDays);
+    let newBilling =  this.calculateTotalBilling(newDays);
+    if(newDays[index].holiday) {
+      newCompensated += 8;
+    }
+
+    for(let i = 0 ; i < newDays.length; i++)
+    {
+      if(newDays[i].floating === true){
+        requireF ++;
+      }
+      if(newDays[i].vacation === true){
+        requireV ++;
+      }
+    }
+    let newComment = "";
+    if(requireF > 0){
+      newComment = requireF +" floating required; ";
+    }
+    if(requireV > 0 ){
+      newComment = newComment + requireV + " vacation day required;";
+    }
+
     this.setState({
       billing: newBilling,
+      compensated: newCompensated,
       days: newDays,
+      floatingCount: floatNum,
+      vacationCount: vacationNum,
+      comment: newComment,
+      // weekFloat: requireF,
+      // weekVacation: requireV,
     });
   };
 
@@ -191,34 +294,26 @@ export default class Timesheet extends React.Component {
   timeStringToFloat(time) {
     var hoursMinutes = time.split(/[:]/);
     var hours = parseInt(hoursMinutes[0], 10);
-    var minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
-    return hours + minutes / 60;
+    var minutes = hoursMinutes[1]?parseInt(hoursMinutes[1], 10) : 0;
+    return hours+minutes/60;
   }
 
-  calculateDailyWorkTime(index) {
+  calculateDailyWorkTime(index){
     let start = this.state.days[index].startTime;
     let end = this.state.days[index].endTime;
-    if (start === "N/A" || end === "N/A") {
+    if (start ==='N/A' || end ==='N/A'){
       return 0.0;
     }
     return this.timeStringToFloat(end) - this.timeStringToFloat(start);
   }
-  calculateTotalBilling(days) {
+  calculateTotalBilling (days){
     let billingHours = 0;
-    for (let i = 0; i < days.length; i++) {
+    for(let i=0;i<days.length;i++){
       billingHours += days[i].totalHours;
     }
-    console.log("sum is: " + billingHours);
+    console.log("sum is: "+ billingHours);
     return billingHours;
   }
-  handleChangeStartTime = (index) => (event) => {
-    let newDays = this.state.days;
-    newDays[index].startTime = event.target.value;
-    this.setState({
-      days: newDays,
-    });
-  };
-
   render() {
     return (
       <div>
@@ -278,7 +373,10 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
+                <th>{item.day}</th>
+                <th>{item.date}</th>
                 <th>
+
                   <select
                     name="startTime"
                     value={item.startTime}
@@ -310,13 +408,14 @@ export default class Timesheet extends React.Component {
                     <option value="23:00">23:00</option>
                     <option value="24:00">24:00</option>
                   </select>
+
+
                 </th>
                 <th>
-                  <select
-                    name="endTime"
-                    defaultValue={item.endTime}
-                    onChange={this.handleChangeTime(index)}
-                  >
+
+                  <select name="endTime" 
+                  value={item.endTime}
+                  onChange={this.handleChangeTime(index)}>
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
                     <option value="2:00">2:00</option>
@@ -343,38 +442,42 @@ export default class Timesheet extends React.Component {
                     <option value="23:00">23:00</option>
                     <option value="24:00">24:00</option>
                   </select>
+
                 </th>
 
                 <th>{item.totalHours}</th>
                 <th>
-                  {item.holiday ? (
-                    " "
-                  ) : item.vacation ? (
-                    " "
-                  ) : (
-                    <input
-                      name="floating"
-                      type="checkbox"
-                      checked={item.floating}
-                      onChange={this.handleCheckboxChange(index)}
-                    ></input>
-                  )}
-                </th>
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.vacation ?
+                      " "
+                      : <input 
+                      name = "floating"
+                      type = "checkbox"
+                      checked = {item.floating}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }                    
+                 </th>
                 <th>{item.holiday ? "x" : ""}</th>
 
                 <th>
-                  {item.holiday ? (
-                    " "
-                  ) : item.floating ? (
-                    " "
-                  ) : (
-                    <input
-                      name="vacation"
-                      type="checkbox"
-                      checked={item.vacation}
-                      onChange={this.handleCheckboxChange(index)}
-                    ></input>
-                  )}
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.floating ?
+                      " "
+                      : <input 
+                      name = "vacation"
+                      type = "checkbox"
+                      checked = {item.vacation}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }   
+
                 </th>
               </tr>
             ))}
@@ -398,11 +501,13 @@ export default class Timesheet extends React.Component {
             type="button"
             className="button-time"
             onClick={this.handleSave}
+            hidden = {this.state.vacationCount <0 || this.state.floatingCount<0}
           >
             Save
           </button>
         </div>
       </div>
+
     );
   }
 }
