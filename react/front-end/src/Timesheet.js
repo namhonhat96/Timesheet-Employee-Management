@@ -7,10 +7,13 @@ export default class Timesheet extends React.Component {
     userId: "",
     weekEnding: "",
     weekFormat: "",
+    submissionStatus: "",
+    approvalStatus: "",
     billing: "",
     compensated: "",
     comment: "",
     days: [],
+
     dateFormat: "",
     startTime: [],
     floatingCount: 0,
@@ -22,7 +25,8 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = "12/26/2020";
+    let weekEnding = localStorage.getItem("weekEnding");
+    console.log("weekEnding" + weekEnding);
     let yr = weekEnding.split(/[/]/)[2];
     // retrieve pto data from backend 
     axios
@@ -50,10 +54,12 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
-
+        console.log(res.data);
         this.setState({
           userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
+          submissionStatus: timesheet.submissionStatus,
+          approvalStatus: timesheet.approvalStatus,
           billing: timesheet.totalBillingHour,
           compensated: timesheet.totalCompensatedHour,
           days: timesheet.days,
@@ -89,6 +95,8 @@ export default class Timesheet extends React.Component {
     const newTimesheet = {
       userId: this.state.userId,
       weekEnding: this.state.weekEnding,
+      submissionStatus: this.state.submissionStatus,
+      approvalStatus: this.state.approvalStatus,
       totalBillingHour: this.state.billing,
       totalCompensatedHour: this.state.compensated,
       comment: this.state.comment,
@@ -106,6 +114,7 @@ export default class Timesheet extends React.Component {
     axios
     .put("http://localhost:8084/timesheet/update-pto", newPTO)
     .then((res) => {});
+    window.location = "/summary";
     // window.location = "/timesheet"
   };
   convertFormatedtoNormal(inputDay) {
@@ -118,6 +127,7 @@ export default class Timesheet extends React.Component {
       "/" +
       formatDate.getFullYear()
     );
+    
   }
   handleChange3 = (event) => {
     //Calculate based on the total hours (working hour + floating day / vacation)
