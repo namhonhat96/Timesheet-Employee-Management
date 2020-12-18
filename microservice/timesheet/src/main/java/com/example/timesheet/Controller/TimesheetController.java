@@ -5,9 +5,9 @@ import com.example.timesheet.Domain.PTO;
 import com.example.timesheet.Domain.Template;
 import com.example.timesheet.Domain.Timesheet;
 
-import com.example.timesheet.Repository.HolidaysRepository;
-import com.example.timesheet.Repository.PTORepository;
-import com.example.timesheet.Repository.TimesheetRepository;
+import com.example.timesheet.repository.HolidaysRepository;
+import com.example.timesheet.repository.PTORepository;
+import com.example.timesheet.repository.TimesheetRepository;
 import com.example.timesheet.repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -58,10 +58,6 @@ public class TimesheetController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addTimesheet(@RequestBody Timesheet timesheet) {
-        Timesheet timesheet1 = new Timesheet();
-        timesheet.setId(111);
-        timesheet.setUserId(123);
-
         timesheetRepo.save(timesheet);
         return ResponseEntity.ok("Add timesheet");
     }
@@ -69,11 +65,11 @@ public class TimesheetController {
     @PutMapping("/updateTimesheet")
     public ResponseEntity<String> updateTimesheet(@RequestBody Timesheet timesheet) {
         Timesheet original = timesheetRepo.findByUserIdAndWeekEnding(timesheet.getUserId(),timesheet.getWeekEnding());
-        original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
         original.setTotalBillingHour(timesheet.getTotalBillingHour());
         original.setTotalCompensatedHour(timesheet.getTotalCompensatedHour());
         original.setSubmissionStatus(timesheet.getSubmissionStatus());
         original.setApprovalStatus(timesheet.getApprovalStatus());
+        original.setComment(timesheet.getComment());
         original.setDays(timesheet.getDays());
         timesheetRepo.save(original);
         return ResponseEntity.ok("Update timesheet");
@@ -97,12 +93,24 @@ public class TimesheetController {
     }
 
     @GetMapping("/pto")
-    public PTO findByUserIdAndYear(@RequestBody PTO pto){
-        PTO checkPto = ptoRepository.findByUserIdAndYear(pto.getId(), pto.getYear());
+    public PTO findByUserIdAndYear(@RequestParam Integer userId, @RequestParam Integer year){
+        PTO checkPto = ptoRepository.findByUserIdAndYear(userId, year);
         if(checkPto == null){
             System.out.println("No PTO found");
         }
         return checkPto;
+    }
+
+    @PutMapping("/update-pto")
+    public void updatePTO(@RequestBody PTO pto){
+        PTO original = ptoRepository.findByUserIdAndYear(pto.getUserId(), pto.getYear());
+        if(original != null){
+            original.setFloatingCount(pto.getFloatingCount());
+            original.setVacationCount(pto.getVacationCount());
+            ptoRepository.save(original);
+        }else{
+            System.out.println("No PTO found");
+        }
     }
 
     @PostMapping("/update-floating")

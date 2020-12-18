@@ -3,9 +3,9 @@ import com.example.timesheet.Domain.Day;
 import com.example.timesheet.Domain.Holidays;
 import com.example.timesheet.Domain.Timesheet;
 
-import com.example.timesheet.Repository.HolidaysRepository;
+import com.example.timesheet.repository.HolidaysRepository;
 import com.example.timesheet.repository.TemplateRepository;
-import com.example.timesheet.Repository.TimesheetRepository;
+import com.example.timesheet.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

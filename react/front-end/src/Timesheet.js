@@ -13,12 +13,31 @@ export default class Timesheet extends React.Component {
     days: [],
     dateFormat: "",
     startTime: [],
+    floatingCount: 0,
+    vacationCount: 0,
+    year: 0,
   };
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
     let weekEnding = "12/26/2020";
-
+    let yr = weekEnding.split(/[/]/)[2];
+    // retrieve pto data from backend 
+    axios
+    .get('http://localhost:8084/timesheet/pto?userId=' +
+          uid +
+          "&year=" +
+          yr)
+    .then((res)=>{
+          const pto = res.data;
+          console.log("pto: ");
+          console.log(pto);
+          this.setState({
+            year: pto.year,
+            floatingCount: pto.floatingCount,
+            vacationCount: pto.vacationCount,
+          })
+    })
     //retrieve data from backend
     axios
       .get(
@@ -29,10 +48,7 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
-        // newDays = timesheet.days;
-        // for(let i=0; i<newDays.length; i++) {
 
-        // }
         this.setState({
           userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
@@ -76,10 +92,18 @@ export default class Timesheet extends React.Component {
       comment: this.state.comment,
       days: this.state.days,
     };
+    const newPTO ={
+      userId: this.state.userId,
+      year: this.state.year,
+      floatingCount: this.state.floatingCount,
+      vacationCount: this.state.vacationCount,
+    }
     axios
       .put("http://localhost:8084/timesheet/updateTimesheet", newTimesheet)
       .then((res) => {});
-
+    axios
+    .put("http://localhost:8084/timesheet/update-pto", newPTO)
+    .then((res) => {});
     // window.location = "/timesheet"
   };
   convertFormatedtoNormal(inputDay) {
@@ -181,12 +205,15 @@ export default class Timesheet extends React.Component {
   handleCheckboxChange = (index) => (event) => {
     let newDays = this.state.days;
     let name = event.target.name;
-    var newTot;
+    let floatNum = this.state.floatingCount;
+    let vacationNum = this.state.vacationCount;
+
     console.log(event.target.name);
     var newCompensated = this.state.compensated;
     if(name === 'vacation'){
       newDays[index].vacation= this.state.days[index].vacation ? false:true;
       if(newDays[index].vacation) {
+        vacationNum -= 1;
         let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
         newDays[index].startTime = "N/A";
@@ -197,7 +224,7 @@ export default class Timesheet extends React.Component {
         // console.log("vacation compensated: " + compensatedAdd);
       }
       else{
-       
+        vacationNum += 1;
         newDays[index].startTime = "9:00";
         newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
@@ -207,6 +234,7 @@ export default class Timesheet extends React.Component {
     if(name === 'floating'){
       newDays[index].floating = this.state.days[index].floating ? false:true;
       if(newDays[index].floating) {
+        floatNum -= 1;
         let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
         newDays[index].startTime = "N/A";
@@ -215,7 +243,7 @@ export default class Timesheet extends React.Component {
         // console.log("floating compensated: " + compensatedAdd);
       }
       else{
-        
+        floatNum += 1;
         newDays[index].startTime = "9:00";
         newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
@@ -234,6 +262,8 @@ export default class Timesheet extends React.Component {
       billing: newBilling,
       compensated: newCompensated,
       days: newDays,
+      floatingCount: floatNum,
+      vacationCount: vacationNum,
     });
   };
 
@@ -453,6 +483,7 @@ export default class Timesheet extends React.Component {
             type="button"
             className="button-time"
             onClick={this.handleSave}
+            hidden = {this.state.vacationCount <0 || this.state.floatingCount<0}
           >
             Save
           </button>
