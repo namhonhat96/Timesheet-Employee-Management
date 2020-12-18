@@ -5,7 +5,7 @@ import com.example.timesheet.Domain.Timesheet;
 
 import com.example.timesheet.Repository.HolidaysRepository;
 import com.example.timesheet.repository.TemplateRepository;
-import com.example.timesheet.repository.TimesheetRepository;
+import com.example.timesheet.Repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -34,10 +34,19 @@ public class TimesheetDBConfig {
             List<Day> days = initializeDayList1(1,"12/26/2020", 2020);
             List<Day> days2 = initializeDayList1(1,"12/19/2020", 2020);
             List<Day> days3 = initializeDayList1(1,"12/12/2020", 2020);
+            List<Day> days4 = initializeDayList1(1,"12/05/2020", 2020);
+            List<Day> days5 = initializeDayList1(1,"11/28/2020", 2020);
+            List<Day> days6 = initializeDayList1(1,"11/21/2020", 2020);
+
             //Initialize timesheet summary for user 1
             timesheetRepository.save(new Timesheet(1, 1, "12/26/2020", 32, 40, "Not Started", "Not approved", "", days));
-            timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incompleted", "Not approved", "", days2));
-            timesheetRepository.save(new Timesheet(3, 1, "12/12/2020", 40, 40, "Completed", "Approved", "", days3));
+            timesheetRepository.save(new Timesheet(2, 1, "12/19/2020", 40, 40, "Incomplete", "Not approved", "", days2));
+            timesheetRepository.save(new Timesheet(3, 1, "12/12/2020", 40, 40, "Not Started", "Approved", "", days3));
+            timesheetRepository.save(new Timesheet(4, 1, "12/05/2020", 40, 40, "Completed", "Approved", "", days4));
+            timesheetRepository.save(new Timesheet(5, 1, "11/28/2020", 40, 40, "Completed", "Approved", "", days5));
+            timesheetRepository.save(new Timesheet(6, 1, "11/21/2020", 40, 40, "Completed", "Approved", "", days6));
+
+
         };
     }
 

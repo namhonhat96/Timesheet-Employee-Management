@@ -18,6 +18,12 @@ function HomePage() {
   } else {
     isLogin = true;
   }
+
+  function logOutUser(e) {
+    localStorage.clear();
+    window.location = "/";
+  }
+
   return (
     <Router>
       <div>
@@ -32,9 +38,9 @@ function HomePage() {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
-            <li>
-              <Link to="/logout">Log Out</Link>
-            </li>
+            <button className="logout_button" onClick={logOutUser}>
+              Log out
+            </button>
           </ul>
         ) : (
           ""

@@ -345,8 +345,6 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
-                <th>{item.day}</th>
-                <th>{item.date}</th>
                 <th>
                 {/* {item.holiday ? (
                       "N/A"

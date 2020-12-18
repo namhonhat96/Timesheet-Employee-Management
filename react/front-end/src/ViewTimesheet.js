@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default class Timesheet extends React.Component {
+export default class ViewTimesheet extends React.Component {
   state = {
     userId: "",
     weekEnding: "",
