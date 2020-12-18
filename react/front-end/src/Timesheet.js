@@ -17,7 +17,7 @@ export default class Timesheet extends React.Component {
 
   componentDidMount() {
     let uid = localStorage.getItem("userID");
-    let weekEnding = localStorage.getItem("weekEnding");
+    let weekEnding = "12/26/2020";
 
     //retrieve data from backend
     axios
@@ -62,6 +62,8 @@ export default class Timesheet extends React.Component {
     //Calculate based on the total hours (working hour + floating day / vacation)
     this.setState({ compensated: event.target.value });
   };
+
+
 
   handleSave = (event) => {
     event.preventDefault();
@@ -143,17 +145,18 @@ export default class Timesheet extends React.Component {
     let name = event.target.name;
     var newStartTime;
     var newEndTime;
-    if (name === "startTime") {
+    if (name === 'startTime'){
       newDays[index].startTime = event.target.value;
       newStartTime = this.timeStringToFloat(newDays[index].startTime);
-      newEndTime = this.timeStringToFloat(this.state.days[index].endTime);
-    } else if (name === "endTime") {
+      newEndTime =  this.timeStringToFloat(this.state.days[index].endTime);
+    }
+    else if(name ==='endTime'){
       newDays[index].endTime = event.target.value;
       newEndTime = this.timeStringToFloat(newDays[index].endTime);
-      newStartTime = this.timeStringToFloat(this.state.days[index].startTime);
+      newStartTime =  this.timeStringToFloat(this.state.days[index].startTime);
     }
-
-    console.log("start: " + newStartTime);
+    
+    console.log("start: "+newStartTime);
     console.log(newEndTime);
     newDays[index].totalHours = newEndTime - newStartTime;
     let newBilling =  this.calculateTotalBilling(newDays);
@@ -180,7 +183,6 @@ export default class Timesheet extends React.Component {
     let name = event.target.name;
     var newTot;
     console.log(event.target.name);
-<<<<<<< HEAD
     var newCompensated = this.state.compensated;
     if(name === 'vacation'){
       newDays[index].vacation= this.state.days[index].vacation ? false:true;
@@ -198,18 +200,10 @@ export default class Timesheet extends React.Component {
        
         newDays[index].startTime = "9:00";
         newDays[index].endTime = "18:00";
-=======
-    if (name === "vacation") {
-      newDays[index].vacation = this.state.days[index].vacation ? false : true;
-      if (newDays[index].vacation) {
-        newDays[index].totalHours = 0.0;
-      } else {
->>>>>>> e31fd1fcd95f0a4fe0214ec6e04fd5bee16d2ca3
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
       }
       console.log(newDays[index].vacation);
     }
-<<<<<<< HEAD
     if(name === 'floating'){
       newDays[index].floating = this.state.days[index].floating ? false:true;
       if(newDays[index].floating) {
@@ -224,29 +218,18 @@ export default class Timesheet extends React.Component {
         
         newDays[index].startTime = "9:00";
         newDays[index].endTime = "18:00";
-=======
-    if (name === "floating") {
-      newDays[index].floating = this.state.days[index].floating ? false : true;
-      if (newDays[index].floating) {
-        newDays[index].totalHours = 0.0;
-      } else {
->>>>>>> e31fd1fcd95f0a4fe0214ec6e04fd5bee16d2ca3
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
         console.log("compensated" + this.state.compensated);
 
       }
       console.log(newDays[index].floating);
     }
-<<<<<<< HEAD
     let newBilling =  this.calculateTotalBilling(newDays);
     if(newDays[index].holiday) {
       newCompensated += 8;
       // console.log("holiday compensated: " + compensatedAdd);
     }
     
-=======
-    let newBilling = this.calculateTotalBilling(newDays);
->>>>>>> e31fd1fcd95f0a4fe0214ec6e04fd5bee16d2ca3
     this.setState({
       billing: newBilling,
       compensated: newCompensated,
@@ -258,34 +241,26 @@ export default class Timesheet extends React.Component {
   timeStringToFloat(time) {
     var hoursMinutes = time.split(/[:]/);
     var hours = parseInt(hoursMinutes[0], 10);
-    var minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
-    return hours + minutes / 60;
+    var minutes = hoursMinutes[1]?parseInt(hoursMinutes[1], 10) : 0;
+    return hours+minutes/60;
   }
 
-  calculateDailyWorkTime(index) {
+  calculateDailyWorkTime(index){
     let start = this.state.days[index].startTime;
     let end = this.state.days[index].endTime;
-    if (start === "N/A" || end === "N/A") {
+    if (start ==='N/A' || end ==='N/A'){
       return 0.0;
     }
     return this.timeStringToFloat(end) - this.timeStringToFloat(start);
   }
-  calculateTotalBilling(days) {
+  calculateTotalBilling (days){
     let billingHours = 0;
-    for (let i = 0; i < days.length; i++) {
+    for(let i=0;i<days.length;i++){
       billingHours += days[i].totalHours;
     }
-    console.log("sum is: " + billingHours);
+    console.log("sum is: "+ billingHours);
     return billingHours;
   }
-  handleChangeStartTime = (index) => (event) => {
-    let newDays = this.state.days;
-    newDays[index].startTime = event.target.value;
-    this.setState({
-      days: newDays,
-    });
-  };
-
   render() {
     return (
       <div>
@@ -345,6 +320,8 @@ export default class Timesheet extends React.Component {
             </tr>
             {this.state.days.map((item, index) => (
               <tr key={index}>
+                <th>{item.day}</th>
+                <th>{item.date}</th>
                 <th>
                 {/* {item.holiday ? (
                       "N/A"
@@ -385,20 +362,12 @@ export default class Timesheet extends React.Component {
 
                 </th>
                 <th>
-<<<<<<< HEAD
                 {/* {item.holiday ? (
                       "N/A"
                     ) :  ( */}
                   <select name="endTime" 
                   value={item.endTime}
                   onChange={this.handleChangeTime(index)}>
-=======
-                  <select
-                    name="endTime"
-                    defaultValue={item.endTime}
-                    onChange={this.handleChangeTime(index)}
-                  >
->>>>>>> e31fd1fcd95f0a4fe0214ec6e04fd5bee16d2ca3
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
                     <option value="2:00">2:00</option>
@@ -430,34 +399,37 @@ export default class Timesheet extends React.Component {
 
                 <th>{item.totalHours}</th>
                 <th>
-                  {item.holiday ? (
-                    " "
-                  ) : item.vacation ? (
-                    " "
-                  ) : (
-                    <input
-                      name="floating"
-                      type="checkbox"
-                      checked={item.floating}
-                      onChange={this.handleCheckboxChange(index)}
-                    ></input>
-                  )}
-                </th>
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.vacation ?
+                      " "
+                      : <input 
+                      name = "floating"
+                      type = "checkbox"
+                      checked = {item.floating}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }                    
+                 </th>
                 <th>{item.holiday ? "x" : ""}</th>
 
                 <th>
-                  {item.holiday ? (
-                    " "
-                  ) : item.floating ? (
-                    " "
-                  ) : (
-                    <input
-                      name="vacation"
-                      type="checkbox"
-                      checked={item.vacation}
-                      onChange={this.handleCheckboxChange(index)}
-                    ></input>
-                  )}
+                    {item.holiday ? (
+                      " "
+                    ) :  (
+                      item.floating ?
+                      " "
+                      : <input 
+                      name = "vacation"
+                      type = "checkbox"
+                      checked = {item.vacation}
+                      onChange = {this.handleCheckboxChange(index)}>
+                      </input>
+                    )
+                    }   
+
                 </th>
               </tr>
             ))}
@@ -486,6 +458,7 @@ export default class Timesheet extends React.Component {
           </button>
         </div>
       </div>
+
     );
   }
 }
