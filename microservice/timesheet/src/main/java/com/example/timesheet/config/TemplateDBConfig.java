@@ -28,7 +28,7 @@ public class TemplateDBConfig {
         List<Day> dayList1 = new ArrayList<>();
         for(int i = 0; i < 7; i++){
             if (i > 0 && i < 6){
-                Day weekday = new Day("9:00","18:00",8.0,false,false,false);
+                Day weekday = new Day("9:00","18:00",9.0,false,false,false);
                 dayList1.add(weekday);
             }
             else {

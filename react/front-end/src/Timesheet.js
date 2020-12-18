@@ -29,6 +29,10 @@ export default class Timesheet extends React.Component {
       )
       .then((res) => {
         const timesheet = res.data;
+        // newDays = timesheet.days;
+        // for(let i=0; i<newDays.length; i++) {
+
+        // }
         this.setState({
           userId: timesheet.userId,
           weekEnding: timesheet.weekEnding,
@@ -155,22 +159,47 @@ export default class Timesheet extends React.Component {
     console.log("start: "+newStartTime);
     console.log(newEndTime);
     newDays[index].totalHours = newEndTime - newStartTime;
+    let newBilling =  this.calculateTotalBilling(newDays);
+    // console.log("newBilling: " + newBilling);
+    
+    let diff = newBilling - this.state.billing;
+    // console.log("diff: " + diff);
+    // console.log("compensated" + this.state.compensated);
+    let newCompensated = this.state.compensated + diff;
+
+
+
     this.setState({
       days: newDays,
+      billing: newBilling,
+      compensated: newCompensated
+
     });
   };
+
 
   handleCheckboxChange = (index) => (event) => {
     let newDays = this.state.days;
     let name = event.target.name;
     var newTot;
     console.log(event.target.name);
+    var newCompensated = this.state.compensated;
     if(name === 'vacation'){
       newDays[index].vacation= this.state.days[index].vacation ? false:true;
       if(newDays[index].vacation) {
+        let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
+        newDays[index].startTime = "N/A";
+        newDays[index].endTime = "N/A";
+        
+        newCompensated += 8 - originalTotalHour;
+        console.log("original compensated" + this.state.compensated);
+        // console.log("vacation compensated: " + compensatedAdd);
       }
       else{
+       
+        newDays[index].startTime = "9:00";
+        newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
       }
       console.log(newDays[index].vacation);
@@ -178,16 +207,32 @@ export default class Timesheet extends React.Component {
     if(name === 'floating'){
       newDays[index].floating = this.state.days[index].floating ? false:true;
       if(newDays[index].floating) {
+        let originalTotalHour = newDays[index].totalHours;
         newDays[index].totalHours = 0.0;
+        newDays[index].startTime = "N/A";
+        newDays[index].endTime = "N/A";
+        newCompensated += 8 - originalTotalHour;
+        // console.log("floating compensated: " + compensatedAdd);
       }
       else{
+        
+        newDays[index].startTime = "9:00";
+        newDays[index].endTime = "18:00";
         newDays[index].totalHours = this.calculateDailyWorkTime(index);
+        console.log("compensated" + this.state.compensated);
+
       }
       console.log(newDays[index].floating);
     }
     let newBilling =  this.calculateTotalBilling(newDays);
+    if(newDays[index].holiday) {
+      newCompensated += 8;
+      // console.log("holiday compensated: " + compensatedAdd);
+    }
+    
     this.setState({
       billing: newBilling,
+      compensated: newCompensated,
       days: newDays,
     });
   };
@@ -278,41 +323,50 @@ export default class Timesheet extends React.Component {
                 <th>{item.day}</th>
                 <th>{item.date}</th>
                 <th>
-                  <select
-                    name="startTime"
-                    value={item.startTime}
-                    onChange={this.handleChangeTime(index)}
-                  >
-                    <option value="N/A">N/A</option>
-                    <option value="1:00">1:00</option>
-                    <option value="2:00">2:00</option>
-                    <option value="3:00">3:00</option>
-                    <option value="4:00">4:00</option>
-                    <option value="5:00">5:00</option>
-                    <option value="6:00">6:00</option>
-                    <option value="7:00">7:00</option>
-                    <option value="8:00">8:00</option>
-                    <option value="9:00">9:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="21:00">21:00</option>
-                    <option value="22:00">22:00</option>
-                    <option value="23:00">23:00</option>
-                    <option value="24:00">24:00</option>
-                  </select>
+                {/* {item.holiday ? (
+                      "N/A"
+                    ) :  ( */}
+                      <select
+                      name="startTime"
+                      value={item.startTime}
+                      onChange={this.handleChangeTime(index)}
+                    >
+                      <option value="N/A">N/A</option>
+                      <option value="1:00">1:00</option>
+                      <option value="2:00">2:00</option>
+                      <option value="3:00">3:00</option>
+                      <option value="4:00">4:00</option>
+                      <option value="5:00">5:00</option>
+                      <option value="6:00">6:00</option>
+                      <option value="7:00">7:00</option>
+                      <option value="8:00">8:00</option>
+                      <option value="9:00">9:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                      <option value="24:00">24:00</option>
+                    </select>
+                    {/* )
+                    }  */}
+
                 </th>
                 <th>
+                {/* {item.holiday ? (
+                      "N/A"
+                    ) :  ( */}
                   <select name="endTime" 
-                  defaultValue={item.endTime}
+                  value={item.endTime}
                   onChange={this.handleChangeTime(index)}>
                     <option value="N/A">N/A</option>
                     <option value="1:00">1:00</option>
@@ -340,6 +394,7 @@ export default class Timesheet extends React.Component {
                     <option value="23:00">23:00</option>
                     <option value="24:00">24:00</option>
                   </select>
+                  {/* )} */}
                 </th>
 
                 <th>{item.totalHours}</th>
