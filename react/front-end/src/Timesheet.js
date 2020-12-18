@@ -95,7 +95,7 @@ export default class Timesheet extends React.Component {
     const newTimesheet = {
       userId: this.state.userId,
       weekEnding: this.state.weekEnding,
-      submissionStatus: this.state.submissionStatus,
+      submissionStatus: "Incomplete",
       approvalStatus: this.state.approvalStatus,
       totalBillingHour: this.state.billing,
       totalCompensatedHour: this.state.compensated,
