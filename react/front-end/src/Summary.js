@@ -57,7 +57,7 @@ export default class Summary extends React.Component {
             <td>{submissionStatus}</td>
             <td>{approvalStatus}</td>
             <td>{option}</td>
-            <td>{comment}</td>
+            <td title = "days left for 2020">{comment}</td>
           </tr>
         );
       });
