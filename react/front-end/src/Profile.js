@@ -69,12 +69,12 @@ export default class Profile extends React.Component {
       homeAddress: this.state.homeAddress,
     };
 
-    const testEContact = {
-      personID: this.state.eContactId,
-      eContactName1: this.state.eContactName1,
-      eContactPhone1: this.state.eContactPhone1,
-      eContactName2: this.state.eContactName2,
-      eContactPhone2: this.state.eContactPhone2,
+    const testEContact1 = {
+      personID: 1,
+      name1: this.state.eContactName1,
+      phoneNumber1: this.state.eContactPhone1,
+      name2: this.state.eContactName2,
+      phoneNumber2: this.state.eContactPhone2,
     };
 
     axios
@@ -86,8 +86,9 @@ export default class Profile extends React.Component {
       .then((res) => {});
 
     axios
-      .post(`http://localhost:8082/econtact/update`, testEContact)
+      .post(`http://localhost:8082/econtact/update`, testEContact1)
       .then((res) => {});
+
     window.location = "/profile";
   };
 

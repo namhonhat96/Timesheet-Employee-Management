@@ -23,8 +23,9 @@ public class EContactController {
     @PostMapping("update")
     public void updateTestByID(@RequestBody EContact eContact){
         EContact validateEContact = this.eContactRepository.findEContactByPersonID(eContact.getPersonID());
-        System.out.println("EContact ID:" + eContact.getId());
+        System.out.println("EContact ID:" + eContact.getPersonID());
         if(validateEContact != null){
+            eContact.setId(validateEContact.getId());
             this.eContactRepository.delete(validateEContact);
             this.eContactRepository.save(eContact);
         }else{

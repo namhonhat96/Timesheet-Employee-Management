@@ -6,12 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Document(collection = "address")
 public class Address {
     @Id
     private Integer id;
     private String homeAddress;
+
 }
